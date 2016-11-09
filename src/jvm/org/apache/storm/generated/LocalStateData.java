@@ -376,16 +376,16 @@ public class LocalStateData implements org.apache.thrift.TBase<LocalStateData, L
           case 1: // SERIALIZED_PARTS
             if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
               {
-                org.apache.thrift.protocol.TMap _map634 = iprot.readMapBegin();
-                struct.serialized_parts = new HashMap<String,ThriftSerializedObject>(2*_map634.size);
-                String _key635;
-                ThriftSerializedObject _val636;
-                for (int _i637 = 0; _i637 < _map634.size; ++_i637)
+                org.apache.thrift.protocol.TMap _map664 = iprot.readMapBegin();
+                struct.serialized_parts = new HashMap<String,ThriftSerializedObject>(2*_map664.size);
+                String _key665;
+                ThriftSerializedObject _val666;
+                for (int _i667 = 0; _i667 < _map664.size; ++_i667)
                 {
-                  _key635 = iprot.readString();
-                  _val636 = new ThriftSerializedObject();
-                  _val636.read(iprot);
-                  struct.serialized_parts.put(_key635, _val636);
+                  _key665 = iprot.readString();
+                  _val666 = new ThriftSerializedObject();
+                  _val666.read(iprot);
+                  struct.serialized_parts.put(_key665, _val666);
                 }
                 iprot.readMapEnd();
               }
@@ -411,10 +411,10 @@ public class LocalStateData implements org.apache.thrift.TBase<LocalStateData, L
         oprot.writeFieldBegin(SERIALIZED_PARTS_FIELD_DESC);
         {
           oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.STRUCT, struct.serialized_parts.size()));
-          for (Map.Entry<String, ThriftSerializedObject> _iter638 : struct.serialized_parts.entrySet())
+          for (Map.Entry<String, ThriftSerializedObject> _iter668 : struct.serialized_parts.entrySet())
           {
-            oprot.writeString(_iter638.getKey());
-            _iter638.getValue().write(oprot);
+            oprot.writeString(_iter668.getKey());
+            _iter668.getValue().write(oprot);
           }
           oprot.writeMapEnd();
         }
@@ -439,10 +439,10 @@ public class LocalStateData implements org.apache.thrift.TBase<LocalStateData, L
       TTupleProtocol oprot = (TTupleProtocol) prot;
       {
         oprot.writeI32(struct.serialized_parts.size());
-        for (Map.Entry<String, ThriftSerializedObject> _iter639 : struct.serialized_parts.entrySet())
+        for (Map.Entry<String, ThriftSerializedObject> _iter669 : struct.serialized_parts.entrySet())
         {
-          oprot.writeString(_iter639.getKey());
-          _iter639.getValue().write(oprot);
+          oprot.writeString(_iter669.getKey());
+          _iter669.getValue().write(oprot);
         }
       }
     }
@@ -451,16 +451,16 @@ public class LocalStateData implements org.apache.thrift.TBase<LocalStateData, L
     public void read(org.apache.thrift.protocol.TProtocol prot, LocalStateData struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
       {
-        org.apache.thrift.protocol.TMap _map640 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-        struct.serialized_parts = new HashMap<String,ThriftSerializedObject>(2*_map640.size);
-        String _key641;
-        ThriftSerializedObject _val642;
-        for (int _i643 = 0; _i643 < _map640.size; ++_i643)
+        org.apache.thrift.protocol.TMap _map670 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+        struct.serialized_parts = new HashMap<String,ThriftSerializedObject>(2*_map670.size);
+        String _key671;
+        ThriftSerializedObject _val672;
+        for (int _i673 = 0; _i673 < _map670.size; ++_i673)
         {
-          _key641 = iprot.readString();
-          _val642 = new ThriftSerializedObject();
-          _val642.read(iprot);
-          struct.serialized_parts.put(_key641, _val642);
+          _key671 = iprot.readString();
+          _val672 = new ThriftSerializedObject();
+          _val672.read(iprot);
+          struct.serialized_parts.put(_key671, _val672);
         }
       }
       struct.set_serialized_parts_isSet(true);

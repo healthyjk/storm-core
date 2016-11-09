@@ -59,6 +59,7 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
   private static final org.apache.thrift.protocol.TField EXECUTOR_STATS_FIELD_DESC = new org.apache.thrift.protocol.TField("executor_stats", org.apache.thrift.protocol.TType.MAP, (short)2);
   private static final org.apache.thrift.protocol.TField TIME_SECS_FIELD_DESC = new org.apache.thrift.protocol.TField("time_secs", org.apache.thrift.protocol.TType.I32, (short)3);
   private static final org.apache.thrift.protocol.TField UPTIME_SECS_FIELD_DESC = new org.apache.thrift.protocol.TField("uptime_secs", org.apache.thrift.protocol.TType.I32, (short)4);
+  private static final org.apache.thrift.protocol.TField SYSTEM_STATS_FIELD_DESC = new org.apache.thrift.protocol.TField("system_stats", org.apache.thrift.protocol.TType.MAP, (short)5);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -70,13 +71,15 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
   private Map<ExecutorInfo,ExecutorStats> executor_stats; // required
   private int time_secs; // required
   private int uptime_secs; // required
+  private Map<String,Double> system_stats; // optional
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
     STORM_ID((short)1, "storm_id"),
     EXECUTOR_STATS((short)2, "executor_stats"),
     TIME_SECS((short)3, "time_secs"),
-    UPTIME_SECS((short)4, "uptime_secs");
+    UPTIME_SECS((short)4, "uptime_secs"),
+    SYSTEM_STATS((short)5, "system_stats");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -99,6 +102,8 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
           return TIME_SECS;
         case 4: // UPTIME_SECS
           return UPTIME_SECS;
+        case 5: // SYSTEM_STATS
+          return SYSTEM_STATS;
         default:
           return null;
       }
@@ -142,6 +147,7 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
   private static final int __TIME_SECS_ISSET_ID = 0;
   private static final int __UPTIME_SECS_ISSET_ID = 1;
   private byte __isset_bitfield = 0;
+  private static final _Fields optionals[] = {_Fields.SYSTEM_STATS};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
@@ -155,6 +161,10 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
     tmpMap.put(_Fields.UPTIME_SECS, new org.apache.thrift.meta_data.FieldMetaData("uptime_secs", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
+    tmpMap.put(_Fields.SYSTEM_STATS, new org.apache.thrift.meta_data.FieldMetaData("system_stats", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
+        new org.apache.thrift.meta_data.MapMetaData(org.apache.thrift.protocol.TType.MAP, 
+            new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING), 
+            new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.DOUBLE))));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(ClusterWorkerHeartbeat.class, metaDataMap);
   }
@@ -202,6 +212,10 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
     }
     this.time_secs = other.time_secs;
     this.uptime_secs = other.uptime_secs;
+    if (other.is_set_system_stats()) {
+      Map<String,Double> __this__system_stats = new HashMap<String,Double>(other.system_stats);
+      this.system_stats = __this__system_stats;
+    }
   }
 
   public ClusterWorkerHeartbeat deepCopy() {
@@ -216,6 +230,7 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
     this.time_secs = 0;
     set_uptime_secs_isSet(false);
     this.uptime_secs = 0;
+    this.system_stats = null;
   }
 
   public String get_storm_id() {
@@ -319,6 +334,40 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
     __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __UPTIME_SECS_ISSET_ID, value);
   }
 
+  public int get_system_stats_size() {
+    return (this.system_stats == null) ? 0 : this.system_stats.size();
+  }
+
+  public void put_to_system_stats(String key, double val) {
+    if (this.system_stats == null) {
+      this.system_stats = new HashMap<String,Double>();
+    }
+    this.system_stats.put(key, val);
+  }
+
+  public Map<String,Double> get_system_stats() {
+    return this.system_stats;
+  }
+
+  public void set_system_stats(Map<String,Double> system_stats) {
+    this.system_stats = system_stats;
+  }
+
+  public void unset_system_stats() {
+    this.system_stats = null;
+  }
+
+  /** Returns true if field system_stats is set (has been assigned a value) and false otherwise */
+  public boolean is_set_system_stats() {
+    return this.system_stats != null;
+  }
+
+  public void set_system_stats_isSet(boolean value) {
+    if (!value) {
+      this.system_stats = null;
+    }
+  }
+
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
     case STORM_ID:
@@ -353,6 +402,14 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
       }
       break;
 
+    case SYSTEM_STATS:
+      if (value == null) {
+        unset_system_stats();
+      } else {
+        set_system_stats((Map<String,Double>)value);
+      }
+      break;
+
     }
   }
 
@@ -369,6 +426,9 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
 
     case UPTIME_SECS:
       return get_uptime_secs();
+
+    case SYSTEM_STATS:
+      return get_system_stats();
 
     }
     throw new IllegalStateException();
@@ -389,6 +449,8 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
       return is_set_time_secs();
     case UPTIME_SECS:
       return is_set_uptime_secs();
+    case SYSTEM_STATS:
+      return is_set_system_stats();
     }
     throw new IllegalStateException();
   }
@@ -442,6 +504,15 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
         return false;
     }
 
+    boolean this_present_system_stats = true && this.is_set_system_stats();
+    boolean that_present_system_stats = true && that.is_set_system_stats();
+    if (this_present_system_stats || that_present_system_stats) {
+      if (!(this_present_system_stats && that_present_system_stats))
+        return false;
+      if (!this.system_stats.equals(that.system_stats))
+        return false;
+    }
+
     return true;
   }
 
@@ -468,6 +539,11 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
     list.add(present_uptime_secs);
     if (present_uptime_secs)
       list.add(uptime_secs);
+
+    boolean present_system_stats = true && (is_set_system_stats());
+    list.add(present_system_stats);
+    if (present_system_stats)
+      list.add(system_stats);
 
     return list.hashCode();
   }
@@ -520,6 +596,16 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
         return lastComparison;
       }
     }
+    lastComparison = Boolean.valueOf(is_set_system_stats()).compareTo(other.is_set_system_stats());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (is_set_system_stats()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.system_stats, other.system_stats);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
     return 0;
   }
 
@@ -563,6 +649,16 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
     sb.append("uptime_secs:");
     sb.append(this.uptime_secs);
     first = false;
+    if (is_set_system_stats()) {
+      if (!first) sb.append(", ");
+      sb.append("system_stats:");
+      if (this.system_stats == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.system_stats);
+      }
+      first = false;
+    }
     sb.append(")");
     return sb.toString();
   }
@@ -635,17 +731,17 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
           case 2: // EXECUTOR_STATS
             if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
               {
-                org.apache.thrift.protocol.TMap _map624 = iprot.readMapBegin();
-                struct.executor_stats = new HashMap<ExecutorInfo,ExecutorStats>(2*_map624.size);
-                ExecutorInfo _key625;
-                ExecutorStats _val626;
-                for (int _i627 = 0; _i627 < _map624.size; ++_i627)
+                org.apache.thrift.protocol.TMap _map644 = iprot.readMapBegin();
+                struct.executor_stats = new HashMap<ExecutorInfo,ExecutorStats>(2*_map644.size);
+                ExecutorInfo _key645;
+                ExecutorStats _val646;
+                for (int _i647 = 0; _i647 < _map644.size; ++_i647)
                 {
-                  _key625 = new ExecutorInfo();
-                  _key625.read(iprot);
-                  _val626 = new ExecutorStats();
-                  _val626.read(iprot);
-                  struct.executor_stats.put(_key625, _val626);
+                  _key645 = new ExecutorInfo();
+                  _key645.read(iprot);
+                  _val646 = new ExecutorStats();
+                  _val646.read(iprot);
+                  struct.executor_stats.put(_key645, _val646);
                 }
                 iprot.readMapEnd();
               }
@@ -666,6 +762,26 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
               struct.uptime_secs = iprot.readI32();
               struct.set_uptime_secs_isSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 5: // SYSTEM_STATS
+            if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+              {
+                org.apache.thrift.protocol.TMap _map648 = iprot.readMapBegin();
+                struct.system_stats = new HashMap<String,Double>(2*_map648.size);
+                String _key649;
+                double _val650;
+                for (int _i651 = 0; _i651 < _map648.size; ++_i651)
+                {
+                  _key649 = iprot.readString();
+                  _val650 = iprot.readDouble();
+                  struct.system_stats.put(_key649, _val650);
+                }
+                iprot.readMapEnd();
+              }
+              struct.set_system_stats_isSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -692,10 +808,10 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
         oprot.writeFieldBegin(EXECUTOR_STATS_FIELD_DESC);
         {
           oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT, org.apache.thrift.protocol.TType.STRUCT, struct.executor_stats.size()));
-          for (Map.Entry<ExecutorInfo, ExecutorStats> _iter628 : struct.executor_stats.entrySet())
+          for (Map.Entry<ExecutorInfo, ExecutorStats> _iter652 : struct.executor_stats.entrySet())
           {
-            _iter628.getKey().write(oprot);
-            _iter628.getValue().write(oprot);
+            _iter652.getKey().write(oprot);
+            _iter652.getValue().write(oprot);
           }
           oprot.writeMapEnd();
         }
@@ -707,6 +823,21 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
       oprot.writeFieldBegin(UPTIME_SECS_FIELD_DESC);
       oprot.writeI32(struct.uptime_secs);
       oprot.writeFieldEnd();
+      if (struct.system_stats != null) {
+        if (struct.is_set_system_stats()) {
+          oprot.writeFieldBegin(SYSTEM_STATS_FIELD_DESC);
+          {
+            oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.DOUBLE, struct.system_stats.size()));
+            for (Map.Entry<String, Double> _iter653 : struct.system_stats.entrySet())
+            {
+              oprot.writeString(_iter653.getKey());
+              oprot.writeDouble(_iter653.getValue());
+            }
+            oprot.writeMapEnd();
+          }
+          oprot.writeFieldEnd();
+        }
+      }
       oprot.writeFieldStop();
       oprot.writeStructEnd();
     }
@@ -727,14 +858,29 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
       oprot.writeString(struct.storm_id);
       {
         oprot.writeI32(struct.executor_stats.size());
-        for (Map.Entry<ExecutorInfo, ExecutorStats> _iter629 : struct.executor_stats.entrySet())
+        for (Map.Entry<ExecutorInfo, ExecutorStats> _iter654 : struct.executor_stats.entrySet())
         {
-          _iter629.getKey().write(oprot);
-          _iter629.getValue().write(oprot);
+          _iter654.getKey().write(oprot);
+          _iter654.getValue().write(oprot);
         }
       }
       oprot.writeI32(struct.time_secs);
       oprot.writeI32(struct.uptime_secs);
+      BitSet optionals = new BitSet();
+      if (struct.is_set_system_stats()) {
+        optionals.set(0);
+      }
+      oprot.writeBitSet(optionals, 1);
+      if (struct.is_set_system_stats()) {
+        {
+          oprot.writeI32(struct.system_stats.size());
+          for (Map.Entry<String, Double> _iter655 : struct.system_stats.entrySet())
+          {
+            oprot.writeString(_iter655.getKey());
+            oprot.writeDouble(_iter655.getValue());
+          }
+        }
+      }
     }
 
     @Override
@@ -743,17 +889,17 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
       struct.storm_id = iprot.readString();
       struct.set_storm_id_isSet(true);
       {
-        org.apache.thrift.protocol.TMap _map630 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT, org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-        struct.executor_stats = new HashMap<ExecutorInfo,ExecutorStats>(2*_map630.size);
-        ExecutorInfo _key631;
-        ExecutorStats _val632;
-        for (int _i633 = 0; _i633 < _map630.size; ++_i633)
+        org.apache.thrift.protocol.TMap _map656 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT, org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+        struct.executor_stats = new HashMap<ExecutorInfo,ExecutorStats>(2*_map656.size);
+        ExecutorInfo _key657;
+        ExecutorStats _val658;
+        for (int _i659 = 0; _i659 < _map656.size; ++_i659)
         {
-          _key631 = new ExecutorInfo();
-          _key631.read(iprot);
-          _val632 = new ExecutorStats();
-          _val632.read(iprot);
-          struct.executor_stats.put(_key631, _val632);
+          _key657 = new ExecutorInfo();
+          _key657.read(iprot);
+          _val658 = new ExecutorStats();
+          _val658.read(iprot);
+          struct.executor_stats.put(_key657, _val658);
         }
       }
       struct.set_executor_stats_isSet(true);
@@ -761,6 +907,22 @@ public class ClusterWorkerHeartbeat implements org.apache.thrift.TBase<ClusterWo
       struct.set_time_secs_isSet(true);
       struct.uptime_secs = iprot.readI32();
       struct.set_uptime_secs_isSet(true);
+      BitSet incoming = iprot.readBitSet(1);
+      if (incoming.get(0)) {
+        {
+          org.apache.thrift.protocol.TMap _map660 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.DOUBLE, iprot.readI32());
+          struct.system_stats = new HashMap<String,Double>(2*_map660.size);
+          String _key661;
+          double _val662;
+          for (int _i663 = 0; _i663 < _map660.size; ++_i663)
+          {
+            _key661 = iprot.readString();
+            _val662 = iprot.readDouble();
+            struct.system_stats.put(_key661, _val662);
+          }
+        }
+        struct.set_system_stats_isSet(true);
+      }
     }
   }
 

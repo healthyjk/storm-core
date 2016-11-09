@@ -58,6 +58,21 @@ public class SystemBolt implements IBolt {
         }
     }
 
+    private static class CPUUsageMetric implements IMetric {
+
+        IFn _getUsage;
+
+        public CPUUsageMetric(IFn getUsage) { _getUsage = getUsage; }
+
+        @Override
+        public Object getValueAndReset() {
+            double cpuUtil = -1;
+            OperatingSystemMXBean osBean = (OperatingSystemMXBean)_getUsage.invoke();
+            cpuUtil = osBean.getSystemLoadAverage();
+            return cpuUtil;
+        }
+    }
+
     // canonically the metrics data exported is time bucketed when doing counts.
     // convert the absolute values here into time buckets.
     private static class GarbageCollectorMetric implements IMetric {
@@ -138,6 +153,14 @@ public class SystemBolt implements IBolt {
         for(GarbageCollectorMXBean b : ManagementFactory.getGarbageCollectorMXBeans()) {
             context.registerMetric("GC/" + b.getName().replaceAll("\\W", ""), new GarbageCollectorMetric(b), bucketSize);
         }
+
+        final OperatingSystemMXBean osBean = ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);
+        context.registerMetric("cpu/Util", new CPUUsageMetric(new AFn() {
+            @Override
+            public Object invoke() {
+                return osBean;
+            }
+        }), bucketSize);
 
         registerMetrics(context, (Map<String,String>)stormConf.get(Config.WORKER_METRICS), bucketSize);
         registerMetrics(context, (Map<String,String>)stormConf.get(Config.TOPOLOGY_WORKER_METRICS), bucketSize);

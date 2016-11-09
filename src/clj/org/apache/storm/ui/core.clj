@@ -426,7 +426,13 @@
        "usedMem" (.get_used_mem s)
        "usedCpu" (.get_used_cpu s)
        "logLink" (supervisor-log-link (.get_host s))
-       "version" (.get_version s)})
+       "version" (.get_version s)
+       "heapMemMax" (get (.get_system_stats s) "heap_initBytes")
+       "heapUsedBytes" (get (.get_system_stats s) "heap_usedBytes")
+       "heapCommittedBytes" (get (.get_system_stats s) "heap_committedBytes")
+       "heapMaxBytes" (get (.get_system_stats s) "heap_maxBytes")
+       "cpuUtil" (get (.get_system_stats s) "cpuUtil")
+       })
     "schedulerDisplayResource" (*STORM-CONF* Config/SCHEDULER_DISPLAY_RESOURCE)}))
 
 (defn all-topologies-summary

@@ -376,16 +376,16 @@ public class LSSupervisorAssignments implements org.apache.thrift.TBase<LSSuperv
           case 1: // ASSIGNMENTS
             if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
               {
-                org.apache.thrift.protocol.TMap _map662 = iprot.readMapBegin();
-                struct.assignments = new HashMap<Integer,LocalAssignment>(2*_map662.size);
-                int _key663;
-                LocalAssignment _val664;
-                for (int _i665 = 0; _i665 < _map662.size; ++_i665)
+                org.apache.thrift.protocol.TMap _map692 = iprot.readMapBegin();
+                struct.assignments = new HashMap<Integer,LocalAssignment>(2*_map692.size);
+                int _key693;
+                LocalAssignment _val694;
+                for (int _i695 = 0; _i695 < _map692.size; ++_i695)
                 {
-                  _key663 = iprot.readI32();
-                  _val664 = new LocalAssignment();
-                  _val664.read(iprot);
-                  struct.assignments.put(_key663, _val664);
+                  _key693 = iprot.readI32();
+                  _val694 = new LocalAssignment();
+                  _val694.read(iprot);
+                  struct.assignments.put(_key693, _val694);
                 }
                 iprot.readMapEnd();
               }
@@ -411,10 +411,10 @@ public class LSSupervisorAssignments implements org.apache.thrift.TBase<LSSuperv
         oprot.writeFieldBegin(ASSIGNMENTS_FIELD_DESC);
         {
           oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.I32, org.apache.thrift.protocol.TType.STRUCT, struct.assignments.size()));
-          for (Map.Entry<Integer, LocalAssignment> _iter666 : struct.assignments.entrySet())
+          for (Map.Entry<Integer, LocalAssignment> _iter696 : struct.assignments.entrySet())
           {
-            oprot.writeI32(_iter666.getKey());
-            _iter666.getValue().write(oprot);
+            oprot.writeI32(_iter696.getKey());
+            _iter696.getValue().write(oprot);
           }
           oprot.writeMapEnd();
         }
@@ -439,10 +439,10 @@ public class LSSupervisorAssignments implements org.apache.thrift.TBase<LSSuperv
       TTupleProtocol oprot = (TTupleProtocol) prot;
       {
         oprot.writeI32(struct.assignments.size());
-        for (Map.Entry<Integer, LocalAssignment> _iter667 : struct.assignments.entrySet())
+        for (Map.Entry<Integer, LocalAssignment> _iter697 : struct.assignments.entrySet())
         {
-          oprot.writeI32(_iter667.getKey());
-          _iter667.getValue().write(oprot);
+          oprot.writeI32(_iter697.getKey());
+          _iter697.getValue().write(oprot);
         }
       }
     }
@@ -451,16 +451,16 @@ public class LSSupervisorAssignments implements org.apache.thrift.TBase<LSSuperv
     public void read(org.apache.thrift.protocol.TProtocol prot, LSSupervisorAssignments struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
       {
-        org.apache.thrift.protocol.TMap _map668 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.I32, org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-        struct.assignments = new HashMap<Integer,LocalAssignment>(2*_map668.size);
-        int _key669;
-        LocalAssignment _val670;
-        for (int _i671 = 0; _i671 < _map668.size; ++_i671)
+        org.apache.thrift.protocol.TMap _map698 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.I32, org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+        struct.assignments = new HashMap<Integer,LocalAssignment>(2*_map698.size);
+        int _key699;
+        LocalAssignment _val700;
+        for (int _i701 = 0; _i701 < _map698.size; ++_i701)
         {
-          _key669 = iprot.readI32();
-          _val670 = new LocalAssignment();
-          _val670.read(iprot);
-          struct.assignments.put(_key669, _val670);
+          _key699 = iprot.readI32();
+          _val700 = new LocalAssignment();
+          _val700.read(iprot);
+          struct.assignments.put(_key699, _val700);
         }
       }
       struct.set_assignments_isSet(true);

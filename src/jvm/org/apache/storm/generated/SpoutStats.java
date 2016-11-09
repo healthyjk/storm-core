@@ -602,27 +602,27 @@ public class SpoutStats implements org.apache.thrift.TBase<SpoutStats, SpoutStat
           case 1: // ACKED
             if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
               {
-                org.apache.thrift.protocol.TMap _map216 = iprot.readMapBegin();
-                struct.acked = new HashMap<String,Map<String,Long>>(2*_map216.size);
-                String _key217;
-                Map<String,Long> _val218;
-                for (int _i219 = 0; _i219 < _map216.size; ++_i219)
+                org.apache.thrift.protocol.TMap _map226 = iprot.readMapBegin();
+                struct.acked = new HashMap<String,Map<String,Long>>(2*_map226.size);
+                String _key227;
+                Map<String,Long> _val228;
+                for (int _i229 = 0; _i229 < _map226.size; ++_i229)
                 {
-                  _key217 = iprot.readString();
+                  _key227 = iprot.readString();
                   {
-                    org.apache.thrift.protocol.TMap _map220 = iprot.readMapBegin();
-                    _val218 = new HashMap<String,Long>(2*_map220.size);
-                    String _key221;
-                    long _val222;
-                    for (int _i223 = 0; _i223 < _map220.size; ++_i223)
+                    org.apache.thrift.protocol.TMap _map230 = iprot.readMapBegin();
+                    _val228 = new HashMap<String,Long>(2*_map230.size);
+                    String _key231;
+                    long _val232;
+                    for (int _i233 = 0; _i233 < _map230.size; ++_i233)
                     {
-                      _key221 = iprot.readString();
-                      _val222 = iprot.readI64();
-                      _val218.put(_key221, _val222);
+                      _key231 = iprot.readString();
+                      _val232 = iprot.readI64();
+                      _val228.put(_key231, _val232);
                     }
                     iprot.readMapEnd();
                   }
-                  struct.acked.put(_key217, _val218);
+                  struct.acked.put(_key227, _val228);
                 }
                 iprot.readMapEnd();
               }
@@ -634,27 +634,27 @@ public class SpoutStats implements org.apache.thrift.TBase<SpoutStats, SpoutStat
           case 2: // FAILED
             if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
               {
-                org.apache.thrift.protocol.TMap _map224 = iprot.readMapBegin();
-                struct.failed = new HashMap<String,Map<String,Long>>(2*_map224.size);
-                String _key225;
-                Map<String,Long> _val226;
-                for (int _i227 = 0; _i227 < _map224.size; ++_i227)
+                org.apache.thrift.protocol.TMap _map234 = iprot.readMapBegin();
+                struct.failed = new HashMap<String,Map<String,Long>>(2*_map234.size);
+                String _key235;
+                Map<String,Long> _val236;
+                for (int _i237 = 0; _i237 < _map234.size; ++_i237)
                 {
-                  _key225 = iprot.readString();
+                  _key235 = iprot.readString();
                   {
-                    org.apache.thrift.protocol.TMap _map228 = iprot.readMapBegin();
-                    _val226 = new HashMap<String,Long>(2*_map228.size);
-                    String _key229;
-                    long _val230;
-                    for (int _i231 = 0; _i231 < _map228.size; ++_i231)
+                    org.apache.thrift.protocol.TMap _map238 = iprot.readMapBegin();
+                    _val236 = new HashMap<String,Long>(2*_map238.size);
+                    String _key239;
+                    long _val240;
+                    for (int _i241 = 0; _i241 < _map238.size; ++_i241)
                     {
-                      _key229 = iprot.readString();
-                      _val230 = iprot.readI64();
-                      _val226.put(_key229, _val230);
+                      _key239 = iprot.readString();
+                      _val240 = iprot.readI64();
+                      _val236.put(_key239, _val240);
                     }
                     iprot.readMapEnd();
                   }
-                  struct.failed.put(_key225, _val226);
+                  struct.failed.put(_key235, _val236);
                 }
                 iprot.readMapEnd();
               }
@@ -666,27 +666,27 @@ public class SpoutStats implements org.apache.thrift.TBase<SpoutStats, SpoutStat
           case 3: // COMPLETE_MS_AVG
             if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
               {
-                org.apache.thrift.protocol.TMap _map232 = iprot.readMapBegin();
-                struct.complete_ms_avg = new HashMap<String,Map<String,Double>>(2*_map232.size);
-                String _key233;
-                Map<String,Double> _val234;
-                for (int _i235 = 0; _i235 < _map232.size; ++_i235)
+                org.apache.thrift.protocol.TMap _map242 = iprot.readMapBegin();
+                struct.complete_ms_avg = new HashMap<String,Map<String,Double>>(2*_map242.size);
+                String _key243;
+                Map<String,Double> _val244;
+                for (int _i245 = 0; _i245 < _map242.size; ++_i245)
                 {
-                  _key233 = iprot.readString();
+                  _key243 = iprot.readString();
                   {
-                    org.apache.thrift.protocol.TMap _map236 = iprot.readMapBegin();
-                    _val234 = new HashMap<String,Double>(2*_map236.size);
-                    String _key237;
-                    double _val238;
-                    for (int _i239 = 0; _i239 < _map236.size; ++_i239)
+                    org.apache.thrift.protocol.TMap _map246 = iprot.readMapBegin();
+                    _val244 = new HashMap<String,Double>(2*_map246.size);
+                    String _key247;
+                    double _val248;
+                    for (int _i249 = 0; _i249 < _map246.size; ++_i249)
                     {
-                      _key237 = iprot.readString();
-                      _val238 = iprot.readDouble();
-                      _val234.put(_key237, _val238);
+                      _key247 = iprot.readString();
+                      _val248 = iprot.readDouble();
+                      _val244.put(_key247, _val248);
                     }
                     iprot.readMapEnd();
                   }
-                  struct.complete_ms_avg.put(_key233, _val234);
+                  struct.complete_ms_avg.put(_key243, _val244);
                 }
                 iprot.readMapEnd();
               }
@@ -712,15 +712,15 @@ public class SpoutStats implements org.apache.thrift.TBase<SpoutStats, SpoutStat
         oprot.writeFieldBegin(ACKED_FIELD_DESC);
         {
           oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.MAP, struct.acked.size()));
-          for (Map.Entry<String, Map<String,Long>> _iter240 : struct.acked.entrySet())
+          for (Map.Entry<String, Map<String,Long>> _iter250 : struct.acked.entrySet())
           {
-            oprot.writeString(_iter240.getKey());
+            oprot.writeString(_iter250.getKey());
             {
-              oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.I64, _iter240.getValue().size()));
-              for (Map.Entry<String, Long> _iter241 : _iter240.getValue().entrySet())
+              oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.I64, _iter250.getValue().size()));
+              for (Map.Entry<String, Long> _iter251 : _iter250.getValue().entrySet())
               {
-                oprot.writeString(_iter241.getKey());
-                oprot.writeI64(_iter241.getValue());
+                oprot.writeString(_iter251.getKey());
+                oprot.writeI64(_iter251.getValue());
               }
               oprot.writeMapEnd();
             }
@@ -733,15 +733,15 @@ public class SpoutStats implements org.apache.thrift.TBase<SpoutStats, SpoutStat
         oprot.writeFieldBegin(FAILED_FIELD_DESC);
         {
           oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.MAP, struct.failed.size()));
-          for (Map.Entry<String, Map<String,Long>> _iter242 : struct.failed.entrySet())
+          for (Map.Entry<String, Map<String,Long>> _iter252 : struct.failed.entrySet())
           {
-            oprot.writeString(_iter242.getKey());
+            oprot.writeString(_iter252.getKey());
             {
-              oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.I64, _iter242.getValue().size()));
-              for (Map.Entry<String, Long> _iter243 : _iter242.getValue().entrySet())
+              oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.I64, _iter252.getValue().size()));
+              for (Map.Entry<String, Long> _iter253 : _iter252.getValue().entrySet())
               {
-                oprot.writeString(_iter243.getKey());
-                oprot.writeI64(_iter243.getValue());
+                oprot.writeString(_iter253.getKey());
+                oprot.writeI64(_iter253.getValue());
               }
               oprot.writeMapEnd();
             }
@@ -754,15 +754,15 @@ public class SpoutStats implements org.apache.thrift.TBase<SpoutStats, SpoutStat
         oprot.writeFieldBegin(COMPLETE_MS_AVG_FIELD_DESC);
         {
           oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.MAP, struct.complete_ms_avg.size()));
-          for (Map.Entry<String, Map<String,Double>> _iter244 : struct.complete_ms_avg.entrySet())
+          for (Map.Entry<String, Map<String,Double>> _iter254 : struct.complete_ms_avg.entrySet())
           {
-            oprot.writeString(_iter244.getKey());
+            oprot.writeString(_iter254.getKey());
             {
-              oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.DOUBLE, _iter244.getValue().size()));
-              for (Map.Entry<String, Double> _iter245 : _iter244.getValue().entrySet())
+              oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.DOUBLE, _iter254.getValue().size()));
+              for (Map.Entry<String, Double> _iter255 : _iter254.getValue().entrySet())
               {
-                oprot.writeString(_iter245.getKey());
-                oprot.writeDouble(_iter245.getValue());
+                oprot.writeString(_iter255.getKey());
+                oprot.writeDouble(_iter255.getValue());
               }
               oprot.writeMapEnd();
             }
@@ -790,45 +790,45 @@ public class SpoutStats implements org.apache.thrift.TBase<SpoutStats, SpoutStat
       TTupleProtocol oprot = (TTupleProtocol) prot;
       {
         oprot.writeI32(struct.acked.size());
-        for (Map.Entry<String, Map<String,Long>> _iter246 : struct.acked.entrySet())
+        for (Map.Entry<String, Map<String,Long>> _iter256 : struct.acked.entrySet())
         {
-          oprot.writeString(_iter246.getKey());
+          oprot.writeString(_iter256.getKey());
           {
-            oprot.writeI32(_iter246.getValue().size());
-            for (Map.Entry<String, Long> _iter247 : _iter246.getValue().entrySet())
+            oprot.writeI32(_iter256.getValue().size());
+            for (Map.Entry<String, Long> _iter257 : _iter256.getValue().entrySet())
             {
-              oprot.writeString(_iter247.getKey());
-              oprot.writeI64(_iter247.getValue());
+              oprot.writeString(_iter257.getKey());
+              oprot.writeI64(_iter257.getValue());
             }
           }
         }
       }
       {
         oprot.writeI32(struct.failed.size());
-        for (Map.Entry<String, Map<String,Long>> _iter248 : struct.failed.entrySet())
+        for (Map.Entry<String, Map<String,Long>> _iter258 : struct.failed.entrySet())
         {
-          oprot.writeString(_iter248.getKey());
+          oprot.writeString(_iter258.getKey());
           {
-            oprot.writeI32(_iter248.getValue().size());
-            for (Map.Entry<String, Long> _iter249 : _iter248.getValue().entrySet())
+            oprot.writeI32(_iter258.getValue().size());
+            for (Map.Entry<String, Long> _iter259 : _iter258.getValue().entrySet())
             {
-              oprot.writeString(_iter249.getKey());
-              oprot.writeI64(_iter249.getValue());
+              oprot.writeString(_iter259.getKey());
+              oprot.writeI64(_iter259.getValue());
             }
           }
         }
       }
       {
         oprot.writeI32(struct.complete_ms_avg.size());
-        for (Map.Entry<String, Map<String,Double>> _iter250 : struct.complete_ms_avg.entrySet())
+        for (Map.Entry<String, Map<String,Double>> _iter260 : struct.complete_ms_avg.entrySet())
         {
-          oprot.writeString(_iter250.getKey());
+          oprot.writeString(_iter260.getKey());
           {
-            oprot.writeI32(_iter250.getValue().size());
-            for (Map.Entry<String, Double> _iter251 : _iter250.getValue().entrySet())
+            oprot.writeI32(_iter260.getValue().size());
+            for (Map.Entry<String, Double> _iter261 : _iter260.getValue().entrySet())
             {
-              oprot.writeString(_iter251.getKey());
-              oprot.writeDouble(_iter251.getValue());
+              oprot.writeString(_iter261.getKey());
+              oprot.writeDouble(_iter261.getValue());
             }
           }
         }
@@ -839,74 +839,74 @@ public class SpoutStats implements org.apache.thrift.TBase<SpoutStats, SpoutStat
     public void read(org.apache.thrift.protocol.TProtocol prot, SpoutStats struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
       {
-        org.apache.thrift.protocol.TMap _map252 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.MAP, iprot.readI32());
-        struct.acked = new HashMap<String,Map<String,Long>>(2*_map252.size);
-        String _key253;
-        Map<String,Long> _val254;
-        for (int _i255 = 0; _i255 < _map252.size; ++_i255)
+        org.apache.thrift.protocol.TMap _map262 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.MAP, iprot.readI32());
+        struct.acked = new HashMap<String,Map<String,Long>>(2*_map262.size);
+        String _key263;
+        Map<String,Long> _val264;
+        for (int _i265 = 0; _i265 < _map262.size; ++_i265)
         {
-          _key253 = iprot.readString();
+          _key263 = iprot.readString();
           {
-            org.apache.thrift.protocol.TMap _map256 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.I64, iprot.readI32());
-            _val254 = new HashMap<String,Long>(2*_map256.size);
-            String _key257;
-            long _val258;
-            for (int _i259 = 0; _i259 < _map256.size; ++_i259)
+            org.apache.thrift.protocol.TMap _map266 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.I64, iprot.readI32());
+            _val264 = new HashMap<String,Long>(2*_map266.size);
+            String _key267;
+            long _val268;
+            for (int _i269 = 0; _i269 < _map266.size; ++_i269)
             {
-              _key257 = iprot.readString();
-              _val258 = iprot.readI64();
-              _val254.put(_key257, _val258);
+              _key267 = iprot.readString();
+              _val268 = iprot.readI64();
+              _val264.put(_key267, _val268);
             }
           }
-          struct.acked.put(_key253, _val254);
+          struct.acked.put(_key263, _val264);
         }
       }
       struct.set_acked_isSet(true);
       {
-        org.apache.thrift.protocol.TMap _map260 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.MAP, iprot.readI32());
-        struct.failed = new HashMap<String,Map<String,Long>>(2*_map260.size);
-        String _key261;
-        Map<String,Long> _val262;
-        for (int _i263 = 0; _i263 < _map260.size; ++_i263)
+        org.apache.thrift.protocol.TMap _map270 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.MAP, iprot.readI32());
+        struct.failed = new HashMap<String,Map<String,Long>>(2*_map270.size);
+        String _key271;
+        Map<String,Long> _val272;
+        for (int _i273 = 0; _i273 < _map270.size; ++_i273)
         {
-          _key261 = iprot.readString();
+          _key271 = iprot.readString();
           {
-            org.apache.thrift.protocol.TMap _map264 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.I64, iprot.readI32());
-            _val262 = new HashMap<String,Long>(2*_map264.size);
-            String _key265;
-            long _val266;
-            for (int _i267 = 0; _i267 < _map264.size; ++_i267)
+            org.apache.thrift.protocol.TMap _map274 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.I64, iprot.readI32());
+            _val272 = new HashMap<String,Long>(2*_map274.size);
+            String _key275;
+            long _val276;
+            for (int _i277 = 0; _i277 < _map274.size; ++_i277)
             {
-              _key265 = iprot.readString();
-              _val266 = iprot.readI64();
-              _val262.put(_key265, _val266);
+              _key275 = iprot.readString();
+              _val276 = iprot.readI64();
+              _val272.put(_key275, _val276);
             }
           }
-          struct.failed.put(_key261, _val262);
+          struct.failed.put(_key271, _val272);
         }
       }
       struct.set_failed_isSet(true);
       {
-        org.apache.thrift.protocol.TMap _map268 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.MAP, iprot.readI32());
-        struct.complete_ms_avg = new HashMap<String,Map<String,Double>>(2*_map268.size);
-        String _key269;
-        Map<String,Double> _val270;
-        for (int _i271 = 0; _i271 < _map268.size; ++_i271)
+        org.apache.thrift.protocol.TMap _map278 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.MAP, iprot.readI32());
+        struct.complete_ms_avg = new HashMap<String,Map<String,Double>>(2*_map278.size);
+        String _key279;
+        Map<String,Double> _val280;
+        for (int _i281 = 0; _i281 < _map278.size; ++_i281)
         {
-          _key269 = iprot.readString();
+          _key279 = iprot.readString();
           {
-            org.apache.thrift.protocol.TMap _map272 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.DOUBLE, iprot.readI32());
-            _val270 = new HashMap<String,Double>(2*_map272.size);
-            String _key273;
-            double _val274;
-            for (int _i275 = 0; _i275 < _map272.size; ++_i275)
+            org.apache.thrift.protocol.TMap _map282 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.DOUBLE, iprot.readI32());
+            _val280 = new HashMap<String,Double>(2*_map282.size);
+            String _key283;
+            double _val284;
+            for (int _i285 = 0; _i285 < _map282.size; ++_i285)
             {
-              _key273 = iprot.readString();
-              _val274 = iprot.readDouble();
-              _val270.put(_key273, _val274);
+              _key283 = iprot.readString();
+              _val284 = iprot.readDouble();
+              _val280.put(_key283, _val284);
             }
           }
-          struct.complete_ms_avg.put(_key269, _val270);
+          struct.complete_ms_avg.put(_key279, _val280);
         }
       }
       struct.set_complete_ms_avg_isSet(true);

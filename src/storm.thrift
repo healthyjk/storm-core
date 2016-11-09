@@ -173,6 +173,8 @@ struct SupervisorSummary {
   7: optional map<string, double> total_resources;
   8: optional double used_mem;
   9: optional double used_cpu;
+  10: optional map<string, double> system_stats;
+  11: optional list<GpuInfo> gpu_infos;
 }
 
 struct NimbusSummary {
@@ -415,6 +417,24 @@ struct BeginDownloadResult {
   3: optional i64 data_size;
 }
 
+struct GpuInfo {
+    1: required string id;
+    2: required string name;
+    3: required string hostname;
+    4: required i32 driver_version;
+    5: required i32 major;
+    6: required i32 minor;
+    7: required i64 total_mem_size;
+    8: required i32 multi_processor_count;
+    9: required i32 cuda_cores_per_multiproc;
+    10: required i32 total_cuda_cores;
+    11: required i32 gpu_clock_rate;
+    12: required i32 mem_clock_rate;
+    13: required i32 mem_bus_width;
+    14: required bool deviceOverlap;
+    15: optional i32 asyncEngineCount;
+}
+
 struct SupervisorInfo {
     1: required i64 time_secs;
     2: required string hostname;
@@ -425,6 +445,8 @@ struct SupervisorInfo {
     7: optional i64 uptime_secs;
     8: optional string version;
     9: optional map<string, double> resources_map;
+    10: optional map<string, double> system_stats;
+    11: optional GpuInfo gpu_info;
 }
 
 struct NodeInfo {
@@ -474,6 +496,7 @@ struct ClusterWorkerHeartbeat {
     2: required map<ExecutorInfo,ExecutorStats> executor_stats;
     3: required i32 time_secs;
     4: required i32 uptime_secs;
+    5: optional map<string, double> system_stats;
 }
 
 struct ThriftSerializedObject {

@@ -64,6 +64,7 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
   private static final org.apache.thrift.protocol.TField TOTAL_RESOURCES_FIELD_DESC = new org.apache.thrift.protocol.TField("total_resources", org.apache.thrift.protocol.TType.MAP, (short)7);
   private static final org.apache.thrift.protocol.TField USED_MEM_FIELD_DESC = new org.apache.thrift.protocol.TField("used_mem", org.apache.thrift.protocol.TType.DOUBLE, (short)8);
   private static final org.apache.thrift.protocol.TField USED_CPU_FIELD_DESC = new org.apache.thrift.protocol.TField("used_cpu", org.apache.thrift.protocol.TType.DOUBLE, (short)9);
+  private static final org.apache.thrift.protocol.TField SYSTEM_STATS_FIELD_DESC = new org.apache.thrift.protocol.TField("system_stats", org.apache.thrift.protocol.TType.MAP, (short)10);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -80,6 +81,7 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
   private Map<String,Double> total_resources; // optional
   private double used_mem; // optional
   private double used_cpu; // optional
+  private Map<String,Double> system_stats; // optional
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -91,7 +93,8 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
     VERSION((short)6, "version"),
     TOTAL_RESOURCES((short)7, "total_resources"),
     USED_MEM((short)8, "used_mem"),
-    USED_CPU((short)9, "used_cpu");
+    USED_CPU((short)9, "used_cpu"),
+    SYSTEM_STATS((short)10, "system_stats");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -124,6 +127,8 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
           return USED_MEM;
         case 9: // USED_CPU
           return USED_CPU;
+        case 10: // SYSTEM_STATS
+          return SYSTEM_STATS;
         default:
           return null;
       }
@@ -170,7 +175,7 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
   private static final int __USED_MEM_ISSET_ID = 3;
   private static final int __USED_CPU_ISSET_ID = 4;
   private byte __isset_bitfield = 0;
-  private static final _Fields optionals[] = {_Fields.VERSION,_Fields.TOTAL_RESOURCES,_Fields.USED_MEM,_Fields.USED_CPU};
+  private static final _Fields optionals[] = {_Fields.VERSION,_Fields.TOTAL_RESOURCES,_Fields.USED_MEM,_Fields.USED_CPU,_Fields.SYSTEM_STATS};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
@@ -194,6 +199,10 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.DOUBLE)));
     tmpMap.put(_Fields.USED_CPU, new org.apache.thrift.meta_data.FieldMetaData("used_cpu", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.DOUBLE)));
+    tmpMap.put(_Fields.SYSTEM_STATS, new org.apache.thrift.meta_data.FieldMetaData("system_stats", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
+        new org.apache.thrift.meta_data.MapMetaData(org.apache.thrift.protocol.TType.MAP, 
+            new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING), 
+            new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.DOUBLE))));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(SupervisorSummary.class, metaDataMap);
   }
@@ -244,6 +253,10 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
     }
     this.used_mem = other.used_mem;
     this.used_cpu = other.used_cpu;
+    if (other.is_set_system_stats()) {
+      Map<String,Double> __this__system_stats = new HashMap<String,Double>(other.system_stats);
+      this.system_stats = __this__system_stats;
+    }
   }
 
   public SupervisorSummary deepCopy() {
@@ -267,6 +280,7 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
     this.used_mem = 0.0;
     set_used_cpu_isSet(false);
     this.used_cpu = 0.0;
+    this.system_stats = null;
   }
 
   public String get_host() {
@@ -482,6 +496,40 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
     __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __USED_CPU_ISSET_ID, value);
   }
 
+  public int get_system_stats_size() {
+    return (this.system_stats == null) ? 0 : this.system_stats.size();
+  }
+
+  public void put_to_system_stats(String key, double val) {
+    if (this.system_stats == null) {
+      this.system_stats = new HashMap<String,Double>();
+    }
+    this.system_stats.put(key, val);
+  }
+
+  public Map<String,Double> get_system_stats() {
+    return this.system_stats;
+  }
+
+  public void set_system_stats(Map<String,Double> system_stats) {
+    this.system_stats = system_stats;
+  }
+
+  public void unset_system_stats() {
+    this.system_stats = null;
+  }
+
+  /** Returns true if field system_stats is set (has been assigned a value) and false otherwise */
+  public boolean is_set_system_stats() {
+    return this.system_stats != null;
+  }
+
+  public void set_system_stats_isSet(boolean value) {
+    if (!value) {
+      this.system_stats = null;
+    }
+  }
+
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
     case HOST:
@@ -556,6 +604,14 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
       }
       break;
 
+    case SYSTEM_STATS:
+      if (value == null) {
+        unset_system_stats();
+      } else {
+        set_system_stats((Map<String,Double>)value);
+      }
+      break;
+
     }
   }
 
@@ -588,6 +644,9 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
     case USED_CPU:
       return get_used_cpu();
 
+    case SYSTEM_STATS:
+      return get_system_stats();
+
     }
     throw new IllegalStateException();
   }
@@ -617,6 +676,8 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
       return is_set_used_mem();
     case USED_CPU:
       return is_set_used_cpu();
+    case SYSTEM_STATS:
+      return is_set_system_stats();
     }
     throw new IllegalStateException();
   }
@@ -715,6 +776,15 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
         return false;
     }
 
+    boolean this_present_system_stats = true && this.is_set_system_stats();
+    boolean that_present_system_stats = true && that.is_set_system_stats();
+    if (this_present_system_stats || that_present_system_stats) {
+      if (!(this_present_system_stats && that_present_system_stats))
+        return false;
+      if (!this.system_stats.equals(that.system_stats))
+        return false;
+    }
+
     return true;
   }
 
@@ -766,6 +836,11 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
     list.add(present_used_cpu);
     if (present_used_cpu)
       list.add(used_cpu);
+
+    boolean present_system_stats = true && (is_set_system_stats());
+    list.add(present_system_stats);
+    if (present_system_stats)
+      list.add(system_stats);
 
     return list.hashCode();
   }
@@ -868,6 +943,16 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
         return lastComparison;
       }
     }
+    lastComparison = Boolean.valueOf(is_set_system_stats()).compareTo(other.is_set_system_stats());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (is_set_system_stats()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.system_stats, other.system_stats);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
     return 0;
   }
 
@@ -945,6 +1030,16 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
       if (!first) sb.append(", ");
       sb.append("used_cpu:");
       sb.append(this.used_cpu);
+      first = false;
+    }
+    if (is_set_system_stats()) {
+      if (!first) sb.append(", ");
+      sb.append("system_stats:");
+      if (this.system_stats == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.system_stats);
+      }
       first = false;
     }
     sb.append(")");
@@ -1096,6 +1191,26 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
+          case 10: // SYSTEM_STATS
+            if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+              {
+                org.apache.thrift.protocol.TMap _map86 = iprot.readMapBegin();
+                struct.system_stats = new HashMap<String,Double>(2*_map86.size);
+                String _key87;
+                double _val88;
+                for (int _i89 = 0; _i89 < _map86.size; ++_i89)
+                {
+                  _key87 = iprot.readString();
+                  _val88 = iprot.readDouble();
+                  struct.system_stats.put(_key87, _val88);
+                }
+                iprot.readMapEnd();
+              }
+              struct.set_system_stats_isSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
           default:
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
         }
@@ -1140,10 +1255,10 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
           oprot.writeFieldBegin(TOTAL_RESOURCES_FIELD_DESC);
           {
             oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.DOUBLE, struct.total_resources.size()));
-            for (Map.Entry<String, Double> _iter86 : struct.total_resources.entrySet())
+            for (Map.Entry<String, Double> _iter90 : struct.total_resources.entrySet())
             {
-              oprot.writeString(_iter86.getKey());
-              oprot.writeDouble(_iter86.getValue());
+              oprot.writeString(_iter90.getKey());
+              oprot.writeDouble(_iter90.getValue());
             }
             oprot.writeMapEnd();
           }
@@ -1159,6 +1274,21 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
         oprot.writeFieldBegin(USED_CPU_FIELD_DESC);
         oprot.writeDouble(struct.used_cpu);
         oprot.writeFieldEnd();
+      }
+      if (struct.system_stats != null) {
+        if (struct.is_set_system_stats()) {
+          oprot.writeFieldBegin(SYSTEM_STATS_FIELD_DESC);
+          {
+            oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.DOUBLE, struct.system_stats.size()));
+            for (Map.Entry<String, Double> _iter91 : struct.system_stats.entrySet())
+            {
+              oprot.writeString(_iter91.getKey());
+              oprot.writeDouble(_iter91.getValue());
+            }
+            oprot.writeMapEnd();
+          }
+          oprot.writeFieldEnd();
+        }
       }
       oprot.writeFieldStop();
       oprot.writeStructEnd();
@@ -1195,17 +1325,20 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
       if (struct.is_set_used_cpu()) {
         optionals.set(3);
       }
-      oprot.writeBitSet(optionals, 4);
+      if (struct.is_set_system_stats()) {
+        optionals.set(4);
+      }
+      oprot.writeBitSet(optionals, 5);
       if (struct.is_set_version()) {
         oprot.writeString(struct.version);
       }
       if (struct.is_set_total_resources()) {
         {
           oprot.writeI32(struct.total_resources.size());
-          for (Map.Entry<String, Double> _iter87 : struct.total_resources.entrySet())
+          for (Map.Entry<String, Double> _iter92 : struct.total_resources.entrySet())
           {
-            oprot.writeString(_iter87.getKey());
-            oprot.writeDouble(_iter87.getValue());
+            oprot.writeString(_iter92.getKey());
+            oprot.writeDouble(_iter92.getValue());
           }
         }
       }
@@ -1214,6 +1347,16 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
       }
       if (struct.is_set_used_cpu()) {
         oprot.writeDouble(struct.used_cpu);
+      }
+      if (struct.is_set_system_stats()) {
+        {
+          oprot.writeI32(struct.system_stats.size());
+          for (Map.Entry<String, Double> _iter93 : struct.system_stats.entrySet())
+          {
+            oprot.writeString(_iter93.getKey());
+            oprot.writeDouble(_iter93.getValue());
+          }
+        }
       }
     }
 
@@ -1230,22 +1373,22 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
       struct.set_num_used_workers_isSet(true);
       struct.supervisor_id = iprot.readString();
       struct.set_supervisor_id_isSet(true);
-      BitSet incoming = iprot.readBitSet(4);
+      BitSet incoming = iprot.readBitSet(5);
       if (incoming.get(0)) {
         struct.version = iprot.readString();
         struct.set_version_isSet(true);
       }
       if (incoming.get(1)) {
         {
-          org.apache.thrift.protocol.TMap _map88 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.DOUBLE, iprot.readI32());
-          struct.total_resources = new HashMap<String,Double>(2*_map88.size);
-          String _key89;
-          double _val90;
-          for (int _i91 = 0; _i91 < _map88.size; ++_i91)
+          org.apache.thrift.protocol.TMap _map94 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.DOUBLE, iprot.readI32());
+          struct.total_resources = new HashMap<String,Double>(2*_map94.size);
+          String _key95;
+          double _val96;
+          for (int _i97 = 0; _i97 < _map94.size; ++_i97)
           {
-            _key89 = iprot.readString();
-            _val90 = iprot.readDouble();
-            struct.total_resources.put(_key89, _val90);
+            _key95 = iprot.readString();
+            _val96 = iprot.readDouble();
+            struct.total_resources.put(_key95, _val96);
           }
         }
         struct.set_total_resources_isSet(true);
@@ -1257,6 +1400,21 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
       if (incoming.get(3)) {
         struct.used_cpu = iprot.readDouble();
         struct.set_used_cpu_isSet(true);
+      }
+      if (incoming.get(4)) {
+        {
+          org.apache.thrift.protocol.TMap _map98 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.DOUBLE, iprot.readI32());
+          struct.system_stats = new HashMap<String,Double>(2*_map98.size);
+          String _key99;
+          double _val100;
+          for (int _i101 = 0; _i101 < _map98.size; ++_i101)
+          {
+            _key99 = iprot.readString();
+            _val100 = iprot.readDouble();
+            struct.system_stats.put(_key99, _val100);
+          }
+        }
+        struct.set_system_stats_isSet(true);
       }
     }
   }

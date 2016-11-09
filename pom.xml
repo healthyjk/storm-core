@@ -15,7 +15,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>storm</artifactId>
@@ -31,17 +32,17 @@
 
     <properties>
         <worker-launcher.conf.dir>/etc/storm</worker-launcher.conf.dir>
-        <worker-launcher.additional_cflags />
-        <argLine />
+        <worker-launcher.additional_cflags/>
+        <argLine/>
     </properties>
 
-<repositories>
-		<repository>
-			<id>nexus</id>
-			<name>Nexus Public Repository</name>
-			<url>http://10.134.143.51:8093/nexus/content/groups/public/</url>
-		</repository>
-	</repositories>
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>Nexus Public Repository</name>
+            <url>http://10.134.143.51:8093/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <!--Hadoop Mini Cluster cannot use log4j2 bridge,
@@ -144,11 +145,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-          <groupId>org.clojure</groupId>
-          <artifactId>java.jmx</artifactId>
-          <version>${java_jmx.version}</version>
+            <groupId>org.clojure</groupId>
+            <artifactId>java.jmx</artifactId>
+            <version>${java_jmx.version}</version>
         </dependency>
-        
+
         <!--java-->
         <dependency>
             <groupId>commons-io</groupId>
@@ -368,7 +369,7 @@
     </dependencies>
     <build>
         <sourceDirectory>src/jvm</sourceDirectory>
-         <testSourceDirectory>test/jvm</testSourceDirectory>
+        <testSourceDirectory>test/jvm</testSourceDirectory>
         <resources>
             <resource>
                 <directory>../conf</directory>
@@ -388,17 +389,17 @@
             <resource>
                 <directory>${basedir}/src/resources</directory>
                 <excludes>
-                  <exclude>storm-core-version-info.properties</exclude>
+                    <exclude>storm-core-version-info.properties</exclude>
                 </excludes>
                 <filtering>false</filtering>
-           </resource>
-           <resource>
-              <directory>${basedir}/src/resources</directory>
-              <includes>
-                <include>storm-core-version-info.properties</include>
-             </includes>
-             <filtering>true</filtering>
-         </resource>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/resources</directory>
+                <includes>
+                    <include>storm-core-version-info.properties</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
         </resources>
         <testResources>
             <testResource>
@@ -449,7 +450,8 @@
                             <testNamespaces>
                                 <testNamespace>${clojure.test.set}</testNamespace>
                             </testNamespaces>
-                            <testDeclaredNamespaceOnly>${clojure.test.declared.namespace.only}</testDeclaredNamespaceOnly>
+                            <testDeclaredNamespaceOnly>${clojure.test.declared.namespace.only}
+                            </testDeclaredNamespaceOnly>
                         </configuration>
                     </execution>
                 </executions>
@@ -616,84 +618,84 @@
                             <shadedPattern>org.apache.storm.shade.org.apache.jute</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>carbonite</pattern>
-                          <shadedPattern>org.apache.storm.shade.carbonite</shadedPattern>
+                            <pattern>carbonite</pattern>
+                            <shadedPattern>org.apache.storm.shade.carbonite</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>com.twitter.chill</pattern>
-                          <shadedPattern>org.apache.storm.shade.com.twitter.chill</shadedPattern>
+                            <pattern>com.twitter.chill</pattern>
+                            <shadedPattern>org.apache.storm.shade.com.twitter.chill</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>org.tukaani.xz</pattern>
-                          <shadedPattern>org.apache.storm.shade.org.tukaani.xz</shadedPattern>
+                            <pattern>org.tukaani.xz</pattern>
+                            <shadedPattern>org.apache.storm.shade.org.tukaani.xz</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>org.yaml.snakeyaml</pattern>
-                          <shadedPattern>org.apache.storm.shade.org.yaml.snakeyaml</shadedPattern>
+                            <pattern>org.yaml.snakeyaml</pattern>
+                            <shadedPattern>org.apache.storm.shade.org.yaml.snakeyaml</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>org.jgrapht</pattern>
-                          <shadedPattern>org.apache.storm.shade.org.jgrapht</shadedPattern>
+                            <pattern>org.jgrapht</pattern>
+                            <shadedPattern>org.apache.storm.shade.org.jgrapht</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>org.fusesource</pattern>
-                          <shadedPattern>org.apache.storm.shade.org.fusesource</shadedPattern>
+                            <pattern>org.fusesource</pattern>
+                            <shadedPattern>org.apache.storm.shade.org.fusesource</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>com.metamx.http.client</pattern>
-                          <shadedPattern>org.apache.storm.shade.com.metamx.http.client</shadedPattern>
+                            <pattern>com.metamx.http.client</pattern>
+                            <shadedPattern>org.apache.storm.shade.com.metamx.http.client</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>org.apache.commons.io</pattern>
-                          <shadedPattern>org.apache.storm.shade.org.apache.commons.io</shadedPattern>
+                            <pattern>org.apache.commons.io</pattern>
+                            <shadedPattern>org.apache.storm.shade.org.apache.commons.io</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>org.apache.commons.compress</pattern>
                             <shadedPattern>org.apache.storm.shade.org.apache.commons.compress</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>org.apache.commons.codec</pattern>
-                          <shadedPattern>org.apache.storm.shade.org.apache.commons.codec</shadedPattern>
+                            <pattern>org.apache.commons.codec</pattern>
+                            <shadedPattern>org.apache.storm.shade.org.apache.commons.codec</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>org.apache.commons.fileupload</pattern>
-                          <shadedPattern>org.apache.storm.shade.org.apache.commons.fileupload</shadedPattern>
+                            <pattern>org.apache.commons.fileupload</pattern>
+                            <shadedPattern>org.apache.storm.shade.org.apache.commons.fileupload</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>org.apache.commons.exec</pattern>
-                          <shadedPattern>org.apache.storm.shade.org.apache.commons.exec</shadedPattern>
+                            <pattern>org.apache.commons.exec</pattern>
+                            <shadedPattern>org.apache.storm.shade.org.apache.commons.exec</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>org.apache.commons.lang</pattern>
-                          <shadedPattern>org.apache.storm.shade.org.apache.commons.lang</shadedPattern>
+                            <pattern>org.apache.commons.lang</pattern>
+                            <shadedPattern>org.apache.storm.shade.org.apache.commons.lang</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>org.json.simple</pattern>
-                          <shadedPattern>org.apache.storm.shade.org.json.simple</shadedPattern>
+                            <pattern>org.json.simple</pattern>
+                            <shadedPattern>org.apache.storm.shade.org.json.simple</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>clojure.math</pattern>
-                          <shadedPattern>org.apache.storm.shade.clojure.math</shadedPattern>
+                            <pattern>clojure.math</pattern>
+                            <shadedPattern>org.apache.storm.shade.clojure.math</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>clojure.tools.cli</pattern>
-                          <shadedPattern>org.apache.storm.shade.clojure.tools.cli</shadedPattern>
+                            <pattern>clojure.tools.cli</pattern>
+                            <shadedPattern>org.apache.storm.shade.clojure.tools.cli</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>cljs.tools.cli</pattern>
-                          <shadedPattern>org.apache.storm.shade.cljs.tools.cli</shadedPattern>
+                            <pattern>cljs.tools.cli</pattern>
+                            <shadedPattern>org.apache.storm.shade.cljs.tools.cli</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>clojure.tools.macro</pattern>
-                          <shadedPattern>org.apache.storm.shade.clojure.tools.macro</shadedPattern>
+                            <pattern>clojure.tools.macro</pattern>
+                            <shadedPattern>org.apache.storm.shade.clojure.tools.macro</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>org.joda.time</pattern>
-                          <shadedPattern>org.apache.storm.shade.org.joda.time</shadedPattern>
+                            <pattern>org.joda.time</pattern>
+                            <shadedPattern>org.apache.storm.shade.org.joda.time</shadedPattern>
                         </relocation>
                         <relocation>
-                          <pattern>org.eclipse.jetty</pattern>
-                          <shadedPattern>org.apache.storm.shade.org.eclipse.jetty</shadedPattern>
+                            <pattern>org.eclipse.jetty</pattern>
+                            <shadedPattern>org.apache.storm.shade.org.eclipse.jetty</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>com.codahale.metrics</pattern>
@@ -733,29 +735,99 @@
                         </relocation>
                     </relocations>
                     <transformers>
-                        <transformer implementation="org.apache.storm.maven.shade.clojure.ClojureTransformer" />
+                        <transformer implementation="org.apache.storm.maven.shade.clojure.ClojureTransformer"/>
                     </transformers>
                     <filters>
                         <!-- Several of these filters remove the .clj files from the shaded dependencies, even though only .clj files are in these jars.
                              The reason for this is a bit complex, but intentional.  During the build process all of the dependency .clj files are
-                             compiled down into .class files, and included in storm-core.jar.  The regular shade transformer handles these in 
+                             compiled down into .class files, and included in storm-core.jar.  The regular shade transformer handles these in
                              the majority of cases correctly.  However, the Clojure-Transformer does not shade everything correctly all the
                              time.  Instead of spending a lot of time to get the Clojure-Transformer to parse Clojure correctly we opted to remove
                              the .clj files from the uber jar. -->
-                        <filter><artifact>metrics-clojure:*</artifact><excludes><exclude>**/*.clj</exclude></excludes></filter>
-                        <filter><artifact>org.clojure:core.incubator</artifact><excludes><exclude>**/*.clj</exclude></excludes></filter>
-                        <filter><artifact>cheshire:cheshire</artifact><excludes><exclude>**/*.clj</exclude></excludes></filter>
-                        <filter><artifact>org.clojure:tools.logging</artifact><excludes><exclude>**/*.clj</exclude></excludes></filter>
-                        <filter><artifact>org.clojure:tools.namespace</artifact><excludes><exclude>**/*.clj</exclude></excludes></filter>
-                        <filter><artifact>org.clojure:math.numeric-tower</artifact><excludes><exclude>**/*.clj</exclude></excludes></filter>
-                        <filter><artifact>org.clojure:tools.macro</artifact><excludes><exclude>**/*.clj</exclude></excludes></filter>
-                        <filter><artifact>org.clojure:tools.cli</artifact><excludes><exclude>**/*.clj</exclude></excludes></filter>
-                        <filter><artifact>ns-tracker:ns-tracker</artifact><excludes><exclude>**/*.clj</exclude></excludes></filter>
-                        <filter><artifact>clout:clout</artifact><excludes><exclude>**/*.clj</exclude></excludes></filter>
-                        <filter><artifact>hiccup:hiccup</artifact><excludes><exclude>**/*.clj</exclude></excludes></filter>
-                        <filter><artifact>clj-time:clj-time</artifact><excludes><exclude>**/*.clj</exclude></excludes></filter>
-                        <filter><artifact>ring:*</artifact><excludes><exclude>**/*.clj</exclude></excludes></filter>
-                        <filter><artifact>compojure:compojure</artifact><excludes><exclude>**/*.clj</exclude></excludes></filter>
+                        <filter>
+                            <artifact>metrics-clojure:*</artifact>
+                            <excludes>
+                                <exclude>**/*.clj</exclude>
+                            </excludes>
+                        </filter>
+                        <filter>
+                            <artifact>org.clojure:core.incubator</artifact>
+                            <excludes>
+                                <exclude>**/*.clj</exclude>
+                            </excludes>
+                        </filter>
+                        <filter>
+                            <artifact>cheshire:cheshire</artifact>
+                            <excludes>
+                                <exclude>**/*.clj</exclude>
+                            </excludes>
+                        </filter>
+                        <filter>
+                            <artifact>org.clojure:tools.logging</artifact>
+                            <excludes>
+                                <exclude>**/*.clj</exclude>
+                            </excludes>
+                        </filter>
+                        <filter>
+                            <artifact>org.clojure:tools.namespace</artifact>
+                            <excludes>
+                                <exclude>**/*.clj</exclude>
+                            </excludes>
+                        </filter>
+                        <filter>
+                            <artifact>org.clojure:math.numeric-tower</artifact>
+                            <excludes>
+                                <exclude>**/*.clj</exclude>
+                            </excludes>
+                        </filter>
+                        <filter>
+                            <artifact>org.clojure:tools.macro</artifact>
+                            <excludes>
+                                <exclude>**/*.clj</exclude>
+                            </excludes>
+                        </filter>
+                        <filter>
+                            <artifact>org.clojure:tools.cli</artifact>
+                            <excludes>
+                                <exclude>**/*.clj</exclude>
+                            </excludes>
+                        </filter>
+                        <filter>
+                            <artifact>ns-tracker:ns-tracker</artifact>
+                            <excludes>
+                                <exclude>**/*.clj</exclude>
+                            </excludes>
+                        </filter>
+                        <filter>
+                            <artifact>clout:clout</artifact>
+                            <excludes>
+                                <exclude>**/*.clj</exclude>
+                            </excludes>
+                        </filter>
+                        <filter>
+                            <artifact>hiccup:hiccup</artifact>
+                            <excludes>
+                                <exclude>**/*.clj</exclude>
+                            </excludes>
+                        </filter>
+                        <filter>
+                            <artifact>clj-time:clj-time</artifact>
+                            <excludes>
+                                <exclude>**/*.clj</exclude>
+                            </excludes>
+                        </filter>
+                        <filter>
+                            <artifact>ring:*</artifact>
+                            <excludes>
+                                <exclude>**/*.clj</exclude>
+                            </excludes>
+                        </filter>
+                        <filter>
+                            <artifact>compojure:compojure</artifact>
+                            <excludes>
+                                <exclude>**/*.clj</exclude>
+                            </excludes>
+                        </filter>
                         <filter>
                             <artifact>org.apache.thrift:*</artifact>
                             <excludes>
@@ -829,29 +901,29 @@
                 </dependencies>
             </plugin>
             <plugin>
-               <groupId>org.apache.storm</groupId>
-               <artifactId>storm-maven-plugins</artifactId>
-               <version>${project.version}</version>
-               <executions>
-                 <execution>
-                   <id>version-info</id>
-                   <phase>generate-resources</phase>
-                   <goals>
-                     <goal>version-info</goal>
-                   </goals>
-                   <configuration>
-                   <source>
-                      <directory>${basedir}/src/</directory>
-                      <includes>
-                        <include>jvm/**/*.java</include>
-                        <include>clj/**/*.clj</include>
-                      </includes>
-                  </source>
-                 </configuration>
-               </execution>
-             </executions>
-          </plugin>
-          <plugin>
+                <groupId>org.apache.storm</groupId>
+                <artifactId>storm-maven-plugins</artifactId>
+                <version>${project.version}</version>
+                <executions>
+                    <execution>
+                        <id>version-info</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>version-info</goal>
+                        </goals>
+                        <configuration>
+                            <source>
+                                <directory>${basedir}/src/</directory>
+                                <includes>
+                                    <include>jvm/**/*.java</include>
+                                    <include>clj/**/*.clj</include>
+                                </includes>
+                            </source>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.8</version>
                 <executions>
@@ -869,33 +941,33 @@
                         </configuration>
                     </execution>
                     <!-- multi-lang resources -->
-                               <execution>
-                                 <id>unpack</id>
-                                 <phase>process-test-resources</phase>
-                                 <goals>
-                                   <goal>unpack</goal>
-                                 </goals>
-                                 <configuration>
-                                   <artifactItems>
-                                     <artifactItem>
-                                       <groupId>org.apache.storm</groupId>
-                                       <artifactId>multilang-ruby</artifactId>
-                                       <version>${project.version}</version>
-                                     </artifactItem>
-                                     <artifactItem>
-                                        <groupId>org.apache.storm</groupId>
-                                        <artifactId>multilang-python</artifactId>
-                                        <version>${project.version}</version>
-                                      </artifactItem>
-                                      <artifactItem>
-                                         <groupId>org.apache.storm</groupId>
-                                         <artifactId>multilang-javascript</artifactId>
-                                         <version>${project.version}</version>
-                                       </artifactItem>
-                                   </artifactItems>
-                                   <outputDirectory>${project.build.directory}/test-classes</outputDirectory>
-                                 </configuration>
-                               </execution>
+                    <execution>
+                        <id>unpack</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.apache.storm</groupId>
+                                    <artifactId>multilang-ruby</artifactId>
+                                    <version>${project.version}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.storm</groupId>
+                                    <artifactId>multilang-python</artifactId>
+                                    <version>${project.version}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.storm</groupId>
+                                    <artifactId>multilang-javascript</artifactId>
+                                    <version>${project.version}</version>
+                                </artifactItem>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/test-classes</outputDirectory>
+                        </configuration>
+                    </execution>
 
                 </executions>
             </plugin>
@@ -931,7 +1003,9 @@
     <profiles>
         <profile>
             <id>coverage</id>
-            <activation><activeByDefault>true</activeByDefault></activation>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
@@ -963,7 +1037,7 @@
                                 <phase>process-test-classes</phase>
                                 <configuration>
                                     <tasks>
-                                        <delete file="target\jacoco.exec" />
+                                        <delete file="target\jacoco.exec"/>
                                     </tasks>
                                 </configuration>
                                 <goals>
@@ -985,8 +1059,10 @@
                                 <configuration>
                                     <append>true</append>
                                     <excludes>
-                                        <exclude>org/apache/storm/metric/api/IMetricsConsumer$DataPointFieldAccess</exclude>
-                                        <exclude>org/apache/storm/metric/api/IMetricsConsumer$TaskInfoFieldAccess</exclude>
+                                        <exclude>org/apache/storm/metric/api/IMetricsConsumer$DataPointFieldAccess
+                                        </exclude>
+                                        <exclude>org/apache/storm/metric/api/IMetricsConsumer$TaskInfoFieldAccess
+                                        </exclude>
                                         <exclude>org/apache/storm/testing/TestSerObjectFieldAccess</exclude>
                                     </excludes>
                                 </configuration>
@@ -1030,14 +1106,18 @@
                         <executions>
                             <execution>
                                 <phase>generate-sources</phase>
-                                <goals><goal>exec</goal></goals>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
                             </execution>
                         </executions>
                         <configuration>
                             <executable>sh</executable>
                             <arguments>
                                 <argument>-c</argument>
-                                <argument>mkdir -p ${project.build.directory}/; cp -rufv ${basedir}/src/native/ ${project.build.directory}/</argument>
+                                <argument>mkdir -p ${project.build.directory}/; cp -rufv ${basedir}/src/native/
+                                    ${project.build.directory}/
+                                </argument>
                             </arguments>
                         </configuration>
                     </plugin>
@@ -1074,7 +1154,9 @@
                             <configureEnvironment>
                                 <property>
                                     <name>CFLAGS</name>
-                                    <value>-DEXEC_CONF_DIR=${worker-launcher.conf.dir} ${worker-launcher.additional_cflags}</value>
+                                    <value>-DEXEC_CONF_DIR=${worker-launcher.conf.dir}
+                                        ${worker-launcher.additional_cflags}
+                                    </value>
                                 </property>
                             </configureEnvironment>
                             <configureWorkDir>${project.build.directory}/native/worker-launcher</configureWorkDir>

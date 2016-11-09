@@ -32,7 +32,7 @@
   (:import [java.nio.file.attribute FileAttribute])
   (:import [java.io File FileOutputStream RandomAccessFile StringWriter
             PrintWriter BufferedReader InputStreamReader IOException])
-  (:import [java.lang.management ManagementFactory])
+  (:import [java.lang.management ManagementFactory MemoryMXBean MemoryUsage])
   (:import [org.apache.commons.exec DefaultExecutor CommandLine])
   (:import [org.apache.commons.io FileUtils])
   (:import [org.apache.storm.logging ThriftAccessLogger])
@@ -1112,3 +1112,39 @@
     (if (clojure.string/blank? name)
       (throw (RuntimeException.
                ("Key name cannot be blank"))))))
+
+
+(defn memory-bean
+  "Return MemoryMXBean"
+  []
+  (ManagementFactory/getMemoryMXBean))
+
+(defn heap-usage
+  "Return the heap usage of the given MemoryMXBean"
+  [^MemoryMXBean bean]
+  (.getHeapMemoryUsage bean))
+
+(defn non-heap-usage
+  "Return the non heap usage of the given MemoryMXBean"
+  [^MemoryMXBean bean]
+  (.getNonHeapMemoryUsage bean))
+
+(defn mk-system-stats-fn
+  "Returns a function that retuns the system stats (memory in Bytes & CPU util) of the JVM process"
+  []
+  (let [memory-bean (memory-bean)]
+    (fn [] {
+            "heap_initBytes" (double (.getInit (heap-usage memory-bean)))
+            "heap_usedBytes" (double (.getUsed (heap-usage memory-bean)))
+            "heap_committedBytes" (double  (.getCommitted (heap-usage memory-bean)))
+            "heap_maxBytes" (double (.getMax (heap-usage memory-bean)))
+            "nonHeap_initBytes" (double (.getInit (non-heap-usage memory-bean)))
+            "nonHeap_usedBytes"  (double (.getUsed (non-heap-usage memory-bean)))
+            "nonHeap_committedBytes" (double (.getCommitted (non-heap-usage memory-bean)))
+            "nonHeap_maxBytes" (double (.getMax (non-heap-usage memory-bean)))
+            "cpuUtil" (Utils/getCpuUtil)
+            })))
+
+(defn bytes2mbytes [data]
+  (map #(/ 1024.0 (/ 1024.0 %1)) data)
+  )

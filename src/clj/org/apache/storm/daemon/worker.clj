@@ -70,6 +70,7 @@
                :executor-stats stats
                :uptime ((:uptime worker))
                :time-secs (current-time-secs)
+               :system-stats ((:system-stats-fn worker))
                }]
     ;; do the zookeeper heartbeat
     (try
@@ -319,6 +320,7 @@
       :transfer-backpressure (atom false) ;; if the transfer queue is backed-up
       :backpressure-trigger (atom false) ;; a trigger for synchronization with executors
       :throttle-on (atom false) ;; whether throttle is activated for spouts
+      :system-stats-fn (mk-system-stats-fn)
       )))
 
 (defn- endpoint->string [[node port]]

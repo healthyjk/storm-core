@@ -18,54 +18,54 @@
   (:import [org.apache.storm.utils NimbusClient Utils])
   (:import [org.apache.curator.retry ExponentialBackoffRetry])
   (:import [org.apache.thrift.transport TTransportException])
-  (:use [org.apache.storm config util])
+  (:use [org.apache.storm config util log])
   (:use [clojure test])
-)
+  )
 
 (deftest test-new-curator-uses-exponential-backoff
   (let [expected_interval 2400
         expected_retries 10
         expected_ceiling 3000
         conf (merge (clojurify-structure (Utils/readDefaultConfig))
-          {Config/STORM_ZOOKEEPER_RETRY_INTERVAL expected_interval
-           Config/STORM_ZOOKEEPER_RETRY_TIMES expected_retries
-           Config/STORM_ZOOKEEPER_RETRY_INTERVAL_CEILING expected_ceiling})
+                    {Config/STORM_ZOOKEEPER_RETRY_INTERVAL         expected_interval
+                     Config/STORM_ZOOKEEPER_RETRY_TIMES            expected_retries
+                     Config/STORM_ZOOKEEPER_RETRY_INTERVAL_CEILING expected_ceiling})
         servers ["bogus_server"]
         arbitrary_port 42
         curator (Utils/newCurator conf servers arbitrary_port nil)
         retry (-> curator .getZookeeperClient .getRetryPolicy)
-       ]
+        ]
     (is (.isAssignableFrom ExponentialBackoffRetry (.getClass retry)))
     (is (= (.getBaseSleepTimeMs retry) expected_interval))
     (is (= (.getN retry) expected_retries))
     (is (= (.getSleepTimeMs retry 10 0) expected_ceiling))
+    )
   )
-)
 
 (deftest test-getConfiguredClient-throws-RunTimeException-on-bad-args
   (let [storm-conf (merge
-                    (read-storm-config)
-                    {STORM-NIMBUS-RETRY-TIMES 0})]
+                     (read-storm-config)
+                     {STORM-NIMBUS-RETRY-TIMES 0})]
     (is (thrown-cause? TTransportException
-      (NimbusClient. storm-conf "" 65535)
-    ))
+                       (NimbusClient. storm-conf "" 65535)
+                       ))
+    )
   )
-)
 
 (deftest test-isZkAuthenticationConfiguredTopology
-    (testing "Returns false on null config"
-      (is (not (Utils/isZkAuthenticationConfiguredTopology nil))))
-    (testing "Returns false on scheme key missing"
-      (is (not (Utils/isZkAuthenticationConfiguredTopology
-          {STORM-ZOOKEEPER-TOPOLOGY-AUTH-SCHEME nil}))))
-    (testing "Returns false on scheme value null"
-      (is (not
-        (Utils/isZkAuthenticationConfiguredTopology
-          {STORM-ZOOKEEPER-TOPOLOGY-AUTH-SCHEME nil}))))
-    (testing "Returns true when scheme set to string"
-      (is
-        (Utils/isZkAuthenticationConfiguredTopology
-          {STORM-ZOOKEEPER-TOPOLOGY-AUTH-SCHEME "foobar"}))))
+  (testing "Returns false on null config"
+    (is (not (Utils/isZkAuthenticationConfiguredTopology nil))))
+  (testing "Returns false on scheme key missing"
+    (is (not (Utils/isZkAuthenticationConfiguredTopology
+               {STORM-ZOOKEEPER-TOPOLOGY-AUTH-SCHEME nil}))))
+  (testing "Returns false on scheme value null"
+    (is (not
+          (Utils/isZkAuthenticationConfiguredTopology
+            {STORM-ZOOKEEPER-TOPOLOGY-AUTH-SCHEME nil}))))
+  (testing "Returns true when scheme set to string"
+    (is
+      (Utils/isZkAuthenticationConfiguredTopology
+        {STORM-ZOOKEEPER-TOPOLOGY-AUTH-SCHEME "foobar"}))))
 
 (deftest test-isZkAuthenticationConfiguredStormServer
   (let [k "java.security.auth.login.config"
@@ -76,11 +76,11 @@
         (is (not (Utils/isZkAuthenticationConfiguredStormServer nil))))
       (testing "Returns false on scheme key missing"
         (is (not (Utils/isZkAuthenticationConfiguredStormServer
-            {STORM-ZOOKEEPER-AUTH-SCHEME nil}))))
+                   {STORM-ZOOKEEPER-AUTH-SCHEME nil}))))
       (testing "Returns false on scheme value null"
         (is (not
-          (Utils/isZkAuthenticationConfiguredStormServer
-            {STORM-ZOOKEEPER-AUTH-SCHEME nil}))))
+              (Utils/isZkAuthenticationConfiguredStormServer
+                {STORM-ZOOKEEPER-AUTH-SCHEME nil}))))
       (testing "Returns true when scheme set to string"
         (is
           (Utils/isZkAuthenticationConfiguredStormServer
@@ -93,10 +93,10 @@
         (do
           (System/setProperty k "anything")
           (is (Utils/isZkAuthenticationConfiguredStormServer {}))))
-    (finally 
-      (if (not-nil? oldprop) 
-        (System/setProperty k oldprop)
-        (.remove (System/getProperties) k))))))
+      (finally
+        (if (not-nil? oldprop)
+          (System/setProperty k oldprop)
+          (.remove (System/getProperties) k))))))
 
 (deftest test-secs-to-millis-long
   (is (= 0 (secs-to-millis-long 0)))
@@ -106,10 +106,22 @@
   (is (= 1080 (secs-to-millis-long 1.08)))
   (is (= 10000 (secs-to-millis-long 10)))
   (is (= 10100 (secs-to-millis-long 10.1)))
-)
+  )
 
 (deftest test-clojure-from-yaml-file
   (is (= {} (clojure-from-yaml-file nil)))
   (is (= {} (clojure-from-yaml-file "foo-bar-file")))
   )
+
+
+;;
+;;
+(defn system-stat-ret []
+  (log-message (mk-system-stats-fn))
+  1.0)
+
+(deftest system-stat-test
+  (let [ret (system-stat-ret)]
+    (is (= 1.0 ret))
+    ))
 

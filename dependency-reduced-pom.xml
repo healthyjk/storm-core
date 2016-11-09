@@ -727,7 +727,8 @@
               <executable>sh</executable>
               <arguments>
                 <argument>-c</argument>
-                <argument>mkdir -p ${project.build.directory}/; cp -rufv ${basedir}/src/native/ ${project.build.directory}/</argument>
+                <argument>mkdir -p ${project.build.directory}/; cp -rufv ${basedir}/src/native/
+                                    ${project.build.directory}/</argument>
               </arguments>
             </configuration>
           </plugin>
@@ -761,7 +762,8 @@
               <configureEnvironment>
                 <property>
                   <name>CFLAGS</name>
-                  <value>-DEXEC_CONF_DIR=${worker-launcher.conf.dir} ${worker-launcher.additional_cflags}</value>
+                  <value>-DEXEC_CONF_DIR=${worker-launcher.conf.dir}
+                                        ${worker-launcher.additional_cflags}</value>
                 </property>
               </configureEnvironment>
               <configureWorkDir>${project.build.directory}/native/worker-launcher</configureWorkDir>
@@ -773,6 +775,13 @@
       </build>
     </profile>
   </profiles>
+  <repositories>
+    <repository>
+      <id>nexus</id>
+      <name>Nexus Public Repository</name>
+      <url>http://10.134.143.51:8093/nexus/content/groups/public/</url>
+    </repository>
+  </repositories>
   <dependencies>
     <dependency>
       <groupId>log4j</groupId>

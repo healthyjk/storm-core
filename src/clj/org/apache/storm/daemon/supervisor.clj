@@ -346,6 +346,7 @@
    :sync-retry (atom 0)
    :download-lock (Object.)
    :stormid->profiler-actions (atom {})
+   :system-stats (mk-system-stats-fn)
    })
 
 (defn required-topo-files-exist?
@@ -783,7 +784,9 @@
                                                  (conf SUPERVISOR-SCHEDULER-META)
                                                  ((:uptime supervisor))
                                                  (:version supervisor)
-                                                 (mk-supervisor-capacities conf))))]
+                                                 (mk-supervisor-capacities conf)
+                                                 ((:system-stats supervisor))
+                                                 )))]
     (heartbeat-fn)
 
     ;; should synchronize supervisor so it doesn't launch anything after being down (optimization)

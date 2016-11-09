@@ -1650,14 +1650,14 @@ public class TopologyInfo implements org.apache.thrift.TBase<TopologyInfo, Topol
           case 4: // EXECUTORS
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list316 = iprot.readListBegin();
-                struct.executors = new ArrayList<ExecutorSummary>(_list316.size);
-                ExecutorSummary _elem317;
-                for (int _i318 = 0; _i318 < _list316.size; ++_i318)
+                org.apache.thrift.protocol.TList _list326 = iprot.readListBegin();
+                struct.executors = new ArrayList<ExecutorSummary>(_list326.size);
+                ExecutorSummary _elem327;
+                for (int _i328 = 0; _i328 < _list326.size; ++_i328)
                 {
-                  _elem317 = new ExecutorSummary();
-                  _elem317.read(iprot);
-                  struct.executors.add(_elem317);
+                  _elem327 = new ExecutorSummary();
+                  _elem327.read(iprot);
+                  struct.executors.add(_elem327);
                 }
                 iprot.readListEnd();
               }
@@ -1677,26 +1677,26 @@ public class TopologyInfo implements org.apache.thrift.TBase<TopologyInfo, Topol
           case 6: // ERRORS
             if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
               {
-                org.apache.thrift.protocol.TMap _map319 = iprot.readMapBegin();
-                struct.errors = new HashMap<String,List<ErrorInfo>>(2*_map319.size);
-                String _key320;
-                List<ErrorInfo> _val321;
-                for (int _i322 = 0; _i322 < _map319.size; ++_i322)
+                org.apache.thrift.protocol.TMap _map329 = iprot.readMapBegin();
+                struct.errors = new HashMap<String,List<ErrorInfo>>(2*_map329.size);
+                String _key330;
+                List<ErrorInfo> _val331;
+                for (int _i332 = 0; _i332 < _map329.size; ++_i332)
                 {
-                  _key320 = iprot.readString();
+                  _key330 = iprot.readString();
                   {
-                    org.apache.thrift.protocol.TList _list323 = iprot.readListBegin();
-                    _val321 = new ArrayList<ErrorInfo>(_list323.size);
-                    ErrorInfo _elem324;
-                    for (int _i325 = 0; _i325 < _list323.size; ++_i325)
+                    org.apache.thrift.protocol.TList _list333 = iprot.readListBegin();
+                    _val331 = new ArrayList<ErrorInfo>(_list333.size);
+                    ErrorInfo _elem334;
+                    for (int _i335 = 0; _i335 < _list333.size; ++_i335)
                     {
-                      _elem324 = new ErrorInfo();
-                      _elem324.read(iprot);
-                      _val321.add(_elem324);
+                      _elem334 = new ErrorInfo();
+                      _elem334.read(iprot);
+                      _val331.add(_elem334);
                     }
                     iprot.readListEnd();
                   }
-                  struct.errors.put(_key320, _val321);
+                  struct.errors.put(_key330, _val331);
                 }
                 iprot.readMapEnd();
               }
@@ -1708,16 +1708,16 @@ public class TopologyInfo implements org.apache.thrift.TBase<TopologyInfo, Topol
           case 7: // COMPONENT_DEBUG
             if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
               {
-                org.apache.thrift.protocol.TMap _map326 = iprot.readMapBegin();
-                struct.component_debug = new HashMap<String,DebugOptions>(2*_map326.size);
-                String _key327;
-                DebugOptions _val328;
-                for (int _i329 = 0; _i329 < _map326.size; ++_i329)
+                org.apache.thrift.protocol.TMap _map336 = iprot.readMapBegin();
+                struct.component_debug = new HashMap<String,DebugOptions>(2*_map336.size);
+                String _key337;
+                DebugOptions _val338;
+                for (int _i339 = 0; _i339 < _map336.size; ++_i339)
                 {
-                  _key327 = iprot.readString();
-                  _val328 = new DebugOptions();
-                  _val328.read(iprot);
-                  struct.component_debug.put(_key327, _val328);
+                  _key337 = iprot.readString();
+                  _val338 = new DebugOptions();
+                  _val338.read(iprot);
+                  struct.component_debug.put(_key337, _val338);
                 }
                 iprot.readMapEnd();
               }
@@ -1828,9 +1828,9 @@ public class TopologyInfo implements org.apache.thrift.TBase<TopologyInfo, Topol
         oprot.writeFieldBegin(EXECUTORS_FIELD_DESC);
         {
           oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.executors.size()));
-          for (ExecutorSummary _iter330 : struct.executors)
+          for (ExecutorSummary _iter340 : struct.executors)
           {
-            _iter330.write(oprot);
+            _iter340.write(oprot);
           }
           oprot.writeListEnd();
         }
@@ -1845,14 +1845,14 @@ public class TopologyInfo implements org.apache.thrift.TBase<TopologyInfo, Topol
         oprot.writeFieldBegin(ERRORS_FIELD_DESC);
         {
           oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.LIST, struct.errors.size()));
-          for (Map.Entry<String, List<ErrorInfo>> _iter331 : struct.errors.entrySet())
+          for (Map.Entry<String, List<ErrorInfo>> _iter341 : struct.errors.entrySet())
           {
-            oprot.writeString(_iter331.getKey());
+            oprot.writeString(_iter341.getKey());
             {
-              oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, _iter331.getValue().size()));
-              for (ErrorInfo _iter332 : _iter331.getValue())
+              oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, _iter341.getValue().size()));
+              for (ErrorInfo _iter342 : _iter341.getValue())
               {
-                _iter332.write(oprot);
+                _iter342.write(oprot);
               }
               oprot.writeListEnd();
             }
@@ -1866,10 +1866,10 @@ public class TopologyInfo implements org.apache.thrift.TBase<TopologyInfo, Topol
           oprot.writeFieldBegin(COMPONENT_DEBUG_FIELD_DESC);
           {
             oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.STRUCT, struct.component_debug.size()));
-            for (Map.Entry<String, DebugOptions> _iter333 : struct.component_debug.entrySet())
+            for (Map.Entry<String, DebugOptions> _iter343 : struct.component_debug.entrySet())
             {
-              oprot.writeString(_iter333.getKey());
-              _iter333.getValue().write(oprot);
+              oprot.writeString(_iter343.getKey());
+              _iter343.getValue().write(oprot);
             }
             oprot.writeMapEnd();
           }
@@ -1947,22 +1947,22 @@ public class TopologyInfo implements org.apache.thrift.TBase<TopologyInfo, Topol
       oprot.writeI32(struct.uptime_secs);
       {
         oprot.writeI32(struct.executors.size());
-        for (ExecutorSummary _iter334 : struct.executors)
+        for (ExecutorSummary _iter344 : struct.executors)
         {
-          _iter334.write(oprot);
+          _iter344.write(oprot);
         }
       }
       oprot.writeString(struct.status);
       {
         oprot.writeI32(struct.errors.size());
-        for (Map.Entry<String, List<ErrorInfo>> _iter335 : struct.errors.entrySet())
+        for (Map.Entry<String, List<ErrorInfo>> _iter345 : struct.errors.entrySet())
         {
-          oprot.writeString(_iter335.getKey());
+          oprot.writeString(_iter345.getKey());
           {
-            oprot.writeI32(_iter335.getValue().size());
-            for (ErrorInfo _iter336 : _iter335.getValue())
+            oprot.writeI32(_iter345.getValue().size());
+            for (ErrorInfo _iter346 : _iter345.getValue())
             {
-              _iter336.write(oprot);
+              _iter346.write(oprot);
             }
           }
         }
@@ -2002,10 +2002,10 @@ public class TopologyInfo implements org.apache.thrift.TBase<TopologyInfo, Topol
       if (struct.is_set_component_debug()) {
         {
           oprot.writeI32(struct.component_debug.size());
-          for (Map.Entry<String, DebugOptions> _iter337 : struct.component_debug.entrySet())
+          for (Map.Entry<String, DebugOptions> _iter347 : struct.component_debug.entrySet())
           {
-            oprot.writeString(_iter337.getKey());
-            _iter337.getValue().write(oprot);
+            oprot.writeString(_iter347.getKey());
+            _iter347.getValue().write(oprot);
           }
         }
       }
@@ -2048,55 +2048,55 @@ public class TopologyInfo implements org.apache.thrift.TBase<TopologyInfo, Topol
       struct.uptime_secs = iprot.readI32();
       struct.set_uptime_secs_isSet(true);
       {
-        org.apache.thrift.protocol.TList _list338 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-        struct.executors = new ArrayList<ExecutorSummary>(_list338.size);
-        ExecutorSummary _elem339;
-        for (int _i340 = 0; _i340 < _list338.size; ++_i340)
+        org.apache.thrift.protocol.TList _list348 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+        struct.executors = new ArrayList<ExecutorSummary>(_list348.size);
+        ExecutorSummary _elem349;
+        for (int _i350 = 0; _i350 < _list348.size; ++_i350)
         {
-          _elem339 = new ExecutorSummary();
-          _elem339.read(iprot);
-          struct.executors.add(_elem339);
+          _elem349 = new ExecutorSummary();
+          _elem349.read(iprot);
+          struct.executors.add(_elem349);
         }
       }
       struct.set_executors_isSet(true);
       struct.status = iprot.readString();
       struct.set_status_isSet(true);
       {
-        org.apache.thrift.protocol.TMap _map341 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.LIST, iprot.readI32());
-        struct.errors = new HashMap<String,List<ErrorInfo>>(2*_map341.size);
-        String _key342;
-        List<ErrorInfo> _val343;
-        for (int _i344 = 0; _i344 < _map341.size; ++_i344)
+        org.apache.thrift.protocol.TMap _map351 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.LIST, iprot.readI32());
+        struct.errors = new HashMap<String,List<ErrorInfo>>(2*_map351.size);
+        String _key352;
+        List<ErrorInfo> _val353;
+        for (int _i354 = 0; _i354 < _map351.size; ++_i354)
         {
-          _key342 = iprot.readString();
+          _key352 = iprot.readString();
           {
-            org.apache.thrift.protocol.TList _list345 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-            _val343 = new ArrayList<ErrorInfo>(_list345.size);
-            ErrorInfo _elem346;
-            for (int _i347 = 0; _i347 < _list345.size; ++_i347)
+            org.apache.thrift.protocol.TList _list355 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+            _val353 = new ArrayList<ErrorInfo>(_list355.size);
+            ErrorInfo _elem356;
+            for (int _i357 = 0; _i357 < _list355.size; ++_i357)
             {
-              _elem346 = new ErrorInfo();
-              _elem346.read(iprot);
-              _val343.add(_elem346);
+              _elem356 = new ErrorInfo();
+              _elem356.read(iprot);
+              _val353.add(_elem356);
             }
           }
-          struct.errors.put(_key342, _val343);
+          struct.errors.put(_key352, _val353);
         }
       }
       struct.set_errors_isSet(true);
       BitSet incoming = iprot.readBitSet(10);
       if (incoming.get(0)) {
         {
-          org.apache.thrift.protocol.TMap _map348 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.component_debug = new HashMap<String,DebugOptions>(2*_map348.size);
-          String _key349;
-          DebugOptions _val350;
-          for (int _i351 = 0; _i351 < _map348.size; ++_i351)
+          org.apache.thrift.protocol.TMap _map358 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.component_debug = new HashMap<String,DebugOptions>(2*_map358.size);
+          String _key359;
+          DebugOptions _val360;
+          for (int _i361 = 0; _i361 < _map358.size; ++_i361)
           {
-            _key349 = iprot.readString();
-            _val350 = new DebugOptions();
-            _val350.read(iprot);
-            struct.component_debug.put(_key349, _val350);
+            _key359 = iprot.readString();
+            _val360 = new DebugOptions();
+            _val360.read(iprot);
+            struct.component_debug.put(_key359, _val360);
           }
         }
         struct.set_component_debug_isSet(true);

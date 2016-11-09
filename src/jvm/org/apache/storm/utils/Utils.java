@@ -74,6 +74,9 @@ import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.io.RandomAccessFile;
 import java.io.Serializable;
+
+import java.lang.management.ManagementFactory;
+import java.lang.management.OperatingSystemMXBean;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.ByteBuffer;
@@ -84,7 +87,6 @@ import java.nio.file.attribute.PosixFilePermission;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -1410,6 +1412,15 @@ public class Utils {
      */
     public static int toPositive(int number) {
         return number & Integer.MAX_VALUE;
+    }
+
+    /**
+     * request the cpu utilization
+     * */
+    public static double getCpuUtil() {
+        OperatingSystemMXBean osBean = ManagementFactory.getOperatingSystemMXBean();
+        double cpuUtil = osBean.getSystemLoadAverage();
+        return cpuUtil;
     }
 }
 
