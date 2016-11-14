@@ -418,21 +418,19 @@ struct BeginDownloadResult {
 }
 
 struct GpuInfo {
-    1: required string id;
+    1: required i32 id;
     2: required string name;
-    3: required string hostname;
-    4: required i32 driver_version;
-    5: required i32 major;
-    6: required i32 minor;
-    7: required i64 total_mem_size;
-    8: required i32 multi_processor_count;
-    9: required i32 cuda_cores_per_multiproc;
-    10: required i32 total_cuda_cores;
-    11: required i32 gpu_clock_rate;
-    12: required i32 mem_clock_rate;
-    13: required i32 mem_bus_width;
-    14: required bool deviceOverlap;
-    15: optional i32 asyncEngineCount;
+    3: required i32 driver_version;
+    4: required i32 major;
+    5: required i32 minor;
+    6: required i64 total_mem_size;
+    7: required i32 multi_processor_count;
+    8: required i32 cuda_cores_per_multiproc;
+    9: required i32 gpu_clock_rate;
+    10: required i32 mem_clock_rate;
+    11: required i32 mem_bus_width;
+    12: required bool device_overlap;
+    13: required i32 async_engine_count;
 }
 
 struct SupervisorInfo {
@@ -446,7 +444,7 @@ struct SupervisorInfo {
     8: optional string version;
     9: optional map<string, double> resources_map;
     10: optional map<string, double> system_stats;
-    11: optional GpuInfo gpu_info;
+    11: optional list<GpuInfo> gpu_infos;
 }
 
 struct NodeInfo {
