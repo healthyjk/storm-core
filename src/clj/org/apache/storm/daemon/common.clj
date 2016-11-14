@@ -70,7 +70,11 @@
 ;; component->executors is a map from spout/bolt id to number of executors for that component
 (defrecord StormBase [storm-name launch-time-secs status num-workers component->executors owner topology-action-options prev-status component->debug])
 
-(defrecord SupervisorInfo [time-secs hostname assignment-id used-ports meta scheduler-meta uptime-secs version resources-map system-stats])
+(defrecord GpuInfo [id name driver-version major minor total-mem-size multi-processor-count cuda-cores-per-multiproc gpu-clock-rate mem-clock-rate mem-bus-width device-overlap async-engine-count])
+
+(defrecord GpuUtilizationInfo [id gpu-util total-mem used-mem process-count])
+
+(defrecord SupervisorInfo [time-secs hostname assignment-id used-ports meta scheduler-meta uptime-secs version resources-map system-stats gpu-infos gpu-util-infos])
 
 (defprotocol DaemonCommon
   (waiting? [this]))

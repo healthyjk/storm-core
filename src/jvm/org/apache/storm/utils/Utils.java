@@ -17,6 +17,7 @@
  */
 package org.apache.storm.utils;
 
+import edu.fudan.gpuhelper.GPUChecker;
 import org.apache.storm.Config;
 import org.apache.storm.blobstore.BlobStore;
 import org.apache.storm.blobstore.BlobStoreAclHandler;
@@ -1419,8 +1420,11 @@ public class Utils {
      * */
     public static double getCpuUtil() {
         OperatingSystemMXBean osBean = ManagementFactory.getOperatingSystemMXBean();
-        double cpuUtil = osBean.getSystemLoadAverage();
-        return cpuUtil;
+        return osBean.getSystemLoadAverage();
+    }
+
+    public static boolean existGpu() {
+        return GPUChecker.hasGpu();
     }
 }
 

@@ -365,15 +365,15 @@ public class Credentials implements org.apache.thrift.TBase<Credentials, Credent
           case 1: // CREDS
             if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
               {
-                org.apache.thrift.protocol.TMap _map488 = iprot.readMapBegin();
-                struct.creds = new HashMap<String,String>(2*_map488.size);
-                String _key489;
-                String _val490;
-                for (int _i491 = 0; _i491 < _map488.size; ++_i491)
+                org.apache.thrift.protocol.TMap _map504 = iprot.readMapBegin();
+                struct.creds = new HashMap<String,String>(2*_map504.size);
+                String _key505;
+                String _val506;
+                for (int _i507 = 0; _i507 < _map504.size; ++_i507)
                 {
-                  _key489 = iprot.readString();
-                  _val490 = iprot.readString();
-                  struct.creds.put(_key489, _val490);
+                  _key505 = iprot.readString();
+                  _val506 = iprot.readString();
+                  struct.creds.put(_key505, _val506);
                 }
                 iprot.readMapEnd();
               }
@@ -399,10 +399,10 @@ public class Credentials implements org.apache.thrift.TBase<Credentials, Credent
         oprot.writeFieldBegin(CREDS_FIELD_DESC);
         {
           oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.STRING, struct.creds.size()));
-          for (Map.Entry<String, String> _iter492 : struct.creds.entrySet())
+          for (Map.Entry<String, String> _iter508 : struct.creds.entrySet())
           {
-            oprot.writeString(_iter492.getKey());
-            oprot.writeString(_iter492.getValue());
+            oprot.writeString(_iter508.getKey());
+            oprot.writeString(_iter508.getValue());
           }
           oprot.writeMapEnd();
         }
@@ -427,10 +427,10 @@ public class Credentials implements org.apache.thrift.TBase<Credentials, Credent
       TTupleProtocol oprot = (TTupleProtocol) prot;
       {
         oprot.writeI32(struct.creds.size());
-        for (Map.Entry<String, String> _iter493 : struct.creds.entrySet())
+        for (Map.Entry<String, String> _iter509 : struct.creds.entrySet())
         {
-          oprot.writeString(_iter493.getKey());
-          oprot.writeString(_iter493.getValue());
+          oprot.writeString(_iter509.getKey());
+          oprot.writeString(_iter509.getValue());
         }
       }
     }
@@ -439,15 +439,15 @@ public class Credentials implements org.apache.thrift.TBase<Credentials, Credent
     public void read(org.apache.thrift.protocol.TProtocol prot, Credentials struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
       {
-        org.apache.thrift.protocol.TMap _map494 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.STRING, iprot.readI32());
-        struct.creds = new HashMap<String,String>(2*_map494.size);
-        String _key495;
-        String _val496;
-        for (int _i497 = 0; _i497 < _map494.size; ++_i497)
+        org.apache.thrift.protocol.TMap _map510 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.STRING, iprot.readI32());
+        struct.creds = new HashMap<String,String>(2*_map510.size);
+        String _key511;
+        String _val512;
+        for (int _i513 = 0; _i513 < _map510.size; ++_i513)
         {
-          _key495 = iprot.readString();
-          _val496 = iprot.readString();
-          struct.creds.put(_key495, _val496);
+          _key511 = iprot.readString();
+          _val512 = iprot.readString();
+          struct.creds.put(_key511, _val512);
         }
       }
       struct.set_creds_isSet(true);

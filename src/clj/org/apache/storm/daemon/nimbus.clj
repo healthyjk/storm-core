@@ -1791,6 +1791,10 @@
                                          (.set_used_cpu sup-sum used-cpu))
                                        (when-let [version (:version info)] (.set_version sup-sum version))
                                        (when-let [system-stats (:system-stats info)] (.set_system_stats sup-sum system-stats))
+                                       (when-let [gpu-infos (:gpu-infos info)]
+                                         (.set_gpu_infos sup-sum (into [] (map converter/thriftify-gpu-info gpu-infos))))
+                                       (when-let [gpu-util-infos (:gpu-util-infos info)]
+                                         (.set_gpu_util_infos sup-sum (into [] (map converter/thriftify-gpu-utilization-info gpu-util-infos))))
                                        sup-sum))
               nimbus-uptime ((:uptime nimbus))
               bases (topology-bases storm-cluster-state)

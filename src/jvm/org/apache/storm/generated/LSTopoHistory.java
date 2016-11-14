@@ -656,13 +656,13 @@ public class LSTopoHistory implements org.apache.thrift.TBase<LSTopoHistory, LST
           case 3: // USERS
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list710 = iprot.readListBegin();
-                struct.users = new ArrayList<String>(_list710.size);
-                String _elem711;
-                for (int _i712 = 0; _i712 < _list710.size; ++_i712)
+                org.apache.thrift.protocol.TList _list742 = iprot.readListBegin();
+                struct.users = new ArrayList<String>(_list742.size);
+                String _elem743;
+                for (int _i744 = 0; _i744 < _list742.size; ++_i744)
                 {
-                  _elem711 = iprot.readString();
-                  struct.users.add(_elem711);
+                  _elem743 = iprot.readString();
+                  struct.users.add(_elem743);
                 }
                 iprot.readListEnd();
               }
@@ -674,13 +674,13 @@ public class LSTopoHistory implements org.apache.thrift.TBase<LSTopoHistory, LST
           case 4: // GROUPS
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list713 = iprot.readListBegin();
-                struct.groups = new ArrayList<String>(_list713.size);
-                String _elem714;
-                for (int _i715 = 0; _i715 < _list713.size; ++_i715)
+                org.apache.thrift.protocol.TList _list745 = iprot.readListBegin();
+                struct.groups = new ArrayList<String>(_list745.size);
+                String _elem746;
+                for (int _i747 = 0; _i747 < _list745.size; ++_i747)
                 {
-                  _elem714 = iprot.readString();
-                  struct.groups.add(_elem714);
+                  _elem746 = iprot.readString();
+                  struct.groups.add(_elem746);
                 }
                 iprot.readListEnd();
               }
@@ -714,9 +714,9 @@ public class LSTopoHistory implements org.apache.thrift.TBase<LSTopoHistory, LST
         oprot.writeFieldBegin(USERS_FIELD_DESC);
         {
           oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, struct.users.size()));
-          for (String _iter716 : struct.users)
+          for (String _iter748 : struct.users)
           {
-            oprot.writeString(_iter716);
+            oprot.writeString(_iter748);
           }
           oprot.writeListEnd();
         }
@@ -726,9 +726,9 @@ public class LSTopoHistory implements org.apache.thrift.TBase<LSTopoHistory, LST
         oprot.writeFieldBegin(GROUPS_FIELD_DESC);
         {
           oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, struct.groups.size()));
-          for (String _iter717 : struct.groups)
+          for (String _iter749 : struct.groups)
           {
-            oprot.writeString(_iter717);
+            oprot.writeString(_iter749);
           }
           oprot.writeListEnd();
         }
@@ -755,16 +755,16 @@ public class LSTopoHistory implements org.apache.thrift.TBase<LSTopoHistory, LST
       oprot.writeI64(struct.time_stamp);
       {
         oprot.writeI32(struct.users.size());
-        for (String _iter718 : struct.users)
+        for (String _iter750 : struct.users)
         {
-          oprot.writeString(_iter718);
+          oprot.writeString(_iter750);
         }
       }
       {
         oprot.writeI32(struct.groups.size());
-        for (String _iter719 : struct.groups)
+        for (String _iter751 : struct.groups)
         {
-          oprot.writeString(_iter719);
+          oprot.writeString(_iter751);
         }
       }
     }
@@ -777,24 +777,24 @@ public class LSTopoHistory implements org.apache.thrift.TBase<LSTopoHistory, LST
       struct.time_stamp = iprot.readI64();
       struct.set_time_stamp_isSet(true);
       {
-        org.apache.thrift.protocol.TList _list720 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
-        struct.users = new ArrayList<String>(_list720.size);
-        String _elem721;
-        for (int _i722 = 0; _i722 < _list720.size; ++_i722)
+        org.apache.thrift.protocol.TList _list752 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
+        struct.users = new ArrayList<String>(_list752.size);
+        String _elem753;
+        for (int _i754 = 0; _i754 < _list752.size; ++_i754)
         {
-          _elem721 = iprot.readString();
-          struct.users.add(_elem721);
+          _elem753 = iprot.readString();
+          struct.users.add(_elem753);
         }
       }
       struct.set_users_isSet(true);
       {
-        org.apache.thrift.protocol.TList _list723 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
-        struct.groups = new ArrayList<String>(_list723.size);
-        String _elem724;
-        for (int _i725 = 0; _i725 < _list723.size; ++_i725)
+        org.apache.thrift.protocol.TList _list755 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
+        struct.groups = new ArrayList<String>(_list755.size);
+        String _elem756;
+        for (int _i757 = 0; _i757 < _list755.size; ++_i757)
         {
-          _elem724 = iprot.readString();
-          struct.groups.add(_elem724);
+          _elem756 = iprot.readString();
+          struct.groups.add(_elem756);
         }
       }
       struct.set_groups_isSet(true);

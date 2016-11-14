@@ -1129,22 +1129,23 @@
   [^MemoryMXBean bean]
   (.getNonHeapMemoryUsage bean))
 
+(defn bytes2mbytes [data]
+  (double (/ 1024.0 (/ 1024.0 data))))
+
 (defn mk-system-stats-fn
   "Returns a function that retuns the system stats (memory in Bytes & CPU util) of the JVM process"
   []
   (let [memory-bean (memory-bean)]
     (fn [] {
-            "heap_initBytes" (double (.getInit (heap-usage memory-bean)))
-            "heap_usedBytes" (double (.getUsed (heap-usage memory-bean)))
-            "heap_committedBytes" (double  (.getCommitted (heap-usage memory-bean)))
-            "heap_maxBytes" (double (.getMax (heap-usage memory-bean)))
-            "nonHeap_initBytes" (double (.getInit (non-heap-usage memory-bean)))
-            "nonHeap_usedBytes"  (double (.getUsed (non-heap-usage memory-bean)))
-            "nonHeap_committedBytes" (double (.getCommitted (non-heap-usage memory-bean)))
-            "nonHeap_maxBytes" (double (.getMax (non-heap-usage memory-bean)))
+            "heap_initBytes" (bytes2mbytes (double (.getInit (heap-usage memory-bean))))
+            "heap_usedBytes" (bytes2mbytes (double (.getUsed (heap-usage memory-bean))))
+            "heap_committedBytes" (bytes2mbytes (double  (.getCommitted (heap-usage memory-bean))))
+            "heap_maxBytes" (bytes2mbytes (double (.getMax (heap-usage memory-bean))))
+            "nonHeap_initBytes" (bytes2mbytes (double (.getInit (non-heap-usage memory-bean))))
+            "nonHeap_usedBytes"  (bytes2mbytes (double (.getUsed (non-heap-usage memory-bean))))
+            "nonHeap_committedBytes" (bytes2mbytes (double (.getCommitted (non-heap-usage memory-bean))))
+            "nonHeap_maxBytes" (bytes2mbytes (double (.getMax (non-heap-usage memory-bean))))
             "cpuUtil" (Utils/getCpuUtil)
             })))
 
-(defn bytes2mbytes [data]
-  (map #(/ 1024.0 (/ 1024.0 %1)) data)
-  )
+

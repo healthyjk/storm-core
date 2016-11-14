@@ -2041,16 +2041,16 @@ public class TopologyPageInfo implements org.apache.thrift.TBase<TopologyPageInf
           case 9: // ID_TO_SPOUT_AGG_STATS
             if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
               {
-                org.apache.thrift.protocol.TMap _map412 = iprot.readMapBegin();
-                struct.id_to_spout_agg_stats = new HashMap<String,ComponentAggregateStats>(2*_map412.size);
-                String _key413;
-                ComponentAggregateStats _val414;
-                for (int _i415 = 0; _i415 < _map412.size; ++_i415)
+                org.apache.thrift.protocol.TMap _map428 = iprot.readMapBegin();
+                struct.id_to_spout_agg_stats = new HashMap<String,ComponentAggregateStats>(2*_map428.size);
+                String _key429;
+                ComponentAggregateStats _val430;
+                for (int _i431 = 0; _i431 < _map428.size; ++_i431)
                 {
-                  _key413 = iprot.readString();
-                  _val414 = new ComponentAggregateStats();
-                  _val414.read(iprot);
-                  struct.id_to_spout_agg_stats.put(_key413, _val414);
+                  _key429 = iprot.readString();
+                  _val430 = new ComponentAggregateStats();
+                  _val430.read(iprot);
+                  struct.id_to_spout_agg_stats.put(_key429, _val430);
                 }
                 iprot.readMapEnd();
               }
@@ -2062,16 +2062,16 @@ public class TopologyPageInfo implements org.apache.thrift.TBase<TopologyPageInf
           case 10: // ID_TO_BOLT_AGG_STATS
             if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
               {
-                org.apache.thrift.protocol.TMap _map416 = iprot.readMapBegin();
-                struct.id_to_bolt_agg_stats = new HashMap<String,ComponentAggregateStats>(2*_map416.size);
-                String _key417;
-                ComponentAggregateStats _val418;
-                for (int _i419 = 0; _i419 < _map416.size; ++_i419)
+                org.apache.thrift.protocol.TMap _map432 = iprot.readMapBegin();
+                struct.id_to_bolt_agg_stats = new HashMap<String,ComponentAggregateStats>(2*_map432.size);
+                String _key433;
+                ComponentAggregateStats _val434;
+                for (int _i435 = 0; _i435 < _map432.size; ++_i435)
                 {
-                  _key417 = iprot.readString();
-                  _val418 = new ComponentAggregateStats();
-                  _val418.read(iprot);
-                  struct.id_to_bolt_agg_stats.put(_key417, _val418);
+                  _key433 = iprot.readString();
+                  _val434 = new ComponentAggregateStats();
+                  _val434.read(iprot);
+                  struct.id_to_bolt_agg_stats.put(_key433, _val434);
                 }
                 iprot.readMapEnd();
               }
@@ -2234,10 +2234,10 @@ public class TopologyPageInfo implements org.apache.thrift.TBase<TopologyPageInf
           oprot.writeFieldBegin(ID_TO_SPOUT_AGG_STATS_FIELD_DESC);
           {
             oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.STRUCT, struct.id_to_spout_agg_stats.size()));
-            for (Map.Entry<String, ComponentAggregateStats> _iter420 : struct.id_to_spout_agg_stats.entrySet())
+            for (Map.Entry<String, ComponentAggregateStats> _iter436 : struct.id_to_spout_agg_stats.entrySet())
             {
-              oprot.writeString(_iter420.getKey());
-              _iter420.getValue().write(oprot);
+              oprot.writeString(_iter436.getKey());
+              _iter436.getValue().write(oprot);
             }
             oprot.writeMapEnd();
           }
@@ -2249,10 +2249,10 @@ public class TopologyPageInfo implements org.apache.thrift.TBase<TopologyPageInf
           oprot.writeFieldBegin(ID_TO_BOLT_AGG_STATS_FIELD_DESC);
           {
             oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.STRUCT, struct.id_to_bolt_agg_stats.size()));
-            for (Map.Entry<String, ComponentAggregateStats> _iter421 : struct.id_to_bolt_agg_stats.entrySet())
+            for (Map.Entry<String, ComponentAggregateStats> _iter437 : struct.id_to_bolt_agg_stats.entrySet())
             {
-              oprot.writeString(_iter421.getKey());
-              _iter421.getValue().write(oprot);
+              oprot.writeString(_iter437.getKey());
+              _iter437.getValue().write(oprot);
             }
             oprot.writeMapEnd();
           }
@@ -2426,20 +2426,20 @@ public class TopologyPageInfo implements org.apache.thrift.TBase<TopologyPageInf
       if (struct.is_set_id_to_spout_agg_stats()) {
         {
           oprot.writeI32(struct.id_to_spout_agg_stats.size());
-          for (Map.Entry<String, ComponentAggregateStats> _iter422 : struct.id_to_spout_agg_stats.entrySet())
+          for (Map.Entry<String, ComponentAggregateStats> _iter438 : struct.id_to_spout_agg_stats.entrySet())
           {
-            oprot.writeString(_iter422.getKey());
-            _iter422.getValue().write(oprot);
+            oprot.writeString(_iter438.getKey());
+            _iter438.getValue().write(oprot);
           }
         }
       }
       if (struct.is_set_id_to_bolt_agg_stats()) {
         {
           oprot.writeI32(struct.id_to_bolt_agg_stats.size());
-          for (Map.Entry<String, ComponentAggregateStats> _iter423 : struct.id_to_bolt_agg_stats.entrySet())
+          for (Map.Entry<String, ComponentAggregateStats> _iter439 : struct.id_to_bolt_agg_stats.entrySet())
           {
-            oprot.writeString(_iter423.getKey());
-            _iter423.getValue().write(oprot);
+            oprot.writeString(_iter439.getKey());
+            _iter439.getValue().write(oprot);
           }
         }
       }
@@ -2514,32 +2514,32 @@ public class TopologyPageInfo implements org.apache.thrift.TBase<TopologyPageInf
       }
       if (incoming.get(7)) {
         {
-          org.apache.thrift.protocol.TMap _map424 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.id_to_spout_agg_stats = new HashMap<String,ComponentAggregateStats>(2*_map424.size);
-          String _key425;
-          ComponentAggregateStats _val426;
-          for (int _i427 = 0; _i427 < _map424.size; ++_i427)
+          org.apache.thrift.protocol.TMap _map440 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.id_to_spout_agg_stats = new HashMap<String,ComponentAggregateStats>(2*_map440.size);
+          String _key441;
+          ComponentAggregateStats _val442;
+          for (int _i443 = 0; _i443 < _map440.size; ++_i443)
           {
-            _key425 = iprot.readString();
-            _val426 = new ComponentAggregateStats();
-            _val426.read(iprot);
-            struct.id_to_spout_agg_stats.put(_key425, _val426);
+            _key441 = iprot.readString();
+            _val442 = new ComponentAggregateStats();
+            _val442.read(iprot);
+            struct.id_to_spout_agg_stats.put(_key441, _val442);
           }
         }
         struct.set_id_to_spout_agg_stats_isSet(true);
       }
       if (incoming.get(8)) {
         {
-          org.apache.thrift.protocol.TMap _map428 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.id_to_bolt_agg_stats = new HashMap<String,ComponentAggregateStats>(2*_map428.size);
-          String _key429;
-          ComponentAggregateStats _val430;
-          for (int _i431 = 0; _i431 < _map428.size; ++_i431)
+          org.apache.thrift.protocol.TMap _map444 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.id_to_bolt_agg_stats = new HashMap<String,ComponentAggregateStats>(2*_map444.size);
+          String _key445;
+          ComponentAggregateStats _val446;
+          for (int _i447 = 0; _i447 < _map444.size; ++_i447)
           {
-            _key429 = iprot.readString();
-            _val430 = new ComponentAggregateStats();
-            _val430.read(iprot);
-            struct.id_to_bolt_agg_stats.put(_key429, _val430);
+            _key445 = iprot.readString();
+            _val446 = new ComponentAggregateStats();
+            _val446.read(iprot);
+            struct.id_to_bolt_agg_stats.put(_key445, _val446);
           }
         }
         struct.set_id_to_bolt_agg_stats_isSet(true);

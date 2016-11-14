@@ -529,15 +529,15 @@ public class RebalanceOptions implements org.apache.thrift.TBase<RebalanceOption
           case 3: // NUM_EXECUTORS
             if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
               {
-                org.apache.thrift.protocol.TMap _map478 = iprot.readMapBegin();
-                struct.num_executors = new HashMap<String,Integer>(2*_map478.size);
-                String _key479;
-                int _val480;
-                for (int _i481 = 0; _i481 < _map478.size; ++_i481)
+                org.apache.thrift.protocol.TMap _map494 = iprot.readMapBegin();
+                struct.num_executors = new HashMap<String,Integer>(2*_map494.size);
+                String _key495;
+                int _val496;
+                for (int _i497 = 0; _i497 < _map494.size; ++_i497)
                 {
-                  _key479 = iprot.readString();
-                  _val480 = iprot.readI32();
-                  struct.num_executors.put(_key479, _val480);
+                  _key495 = iprot.readString();
+                  _val496 = iprot.readI32();
+                  struct.num_executors.put(_key495, _val496);
                 }
                 iprot.readMapEnd();
               }
@@ -574,10 +574,10 @@ public class RebalanceOptions implements org.apache.thrift.TBase<RebalanceOption
           oprot.writeFieldBegin(NUM_EXECUTORS_FIELD_DESC);
           {
             oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.I32, struct.num_executors.size()));
-            for (Map.Entry<String, Integer> _iter482 : struct.num_executors.entrySet())
+            for (Map.Entry<String, Integer> _iter498 : struct.num_executors.entrySet())
             {
-              oprot.writeString(_iter482.getKey());
-              oprot.writeI32(_iter482.getValue());
+              oprot.writeString(_iter498.getKey());
+              oprot.writeI32(_iter498.getValue());
             }
             oprot.writeMapEnd();
           }
@@ -621,10 +621,10 @@ public class RebalanceOptions implements org.apache.thrift.TBase<RebalanceOption
       if (struct.is_set_num_executors()) {
         {
           oprot.writeI32(struct.num_executors.size());
-          for (Map.Entry<String, Integer> _iter483 : struct.num_executors.entrySet())
+          for (Map.Entry<String, Integer> _iter499 : struct.num_executors.entrySet())
           {
-            oprot.writeString(_iter483.getKey());
-            oprot.writeI32(_iter483.getValue());
+            oprot.writeString(_iter499.getKey());
+            oprot.writeI32(_iter499.getValue());
           }
         }
       }
@@ -644,15 +644,15 @@ public class RebalanceOptions implements org.apache.thrift.TBase<RebalanceOption
       }
       if (incoming.get(2)) {
         {
-          org.apache.thrift.protocol.TMap _map484 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.I32, iprot.readI32());
-          struct.num_executors = new HashMap<String,Integer>(2*_map484.size);
-          String _key485;
-          int _val486;
-          for (int _i487 = 0; _i487 < _map484.size; ++_i487)
+          org.apache.thrift.protocol.TMap _map500 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.I32, iprot.readI32());
+          struct.num_executors = new HashMap<String,Integer>(2*_map500.size);
+          String _key501;
+          int _val502;
+          for (int _i503 = 0; _i503 < _map500.size; ++_i503)
           {
-            _key485 = iprot.readString();
-            _val486 = iprot.readI32();
-            struct.num_executors.put(_key485, _val486);
+            _key501 = iprot.readString();
+            _val502 = iprot.readI32();
+            struct.num_executors.put(_key501, _val502);
           }
         }
         struct.set_num_executors_isSet(true);

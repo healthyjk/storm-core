@@ -65,6 +65,8 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
   private static final org.apache.thrift.protocol.TField USED_MEM_FIELD_DESC = new org.apache.thrift.protocol.TField("used_mem", org.apache.thrift.protocol.TType.DOUBLE, (short)8);
   private static final org.apache.thrift.protocol.TField USED_CPU_FIELD_DESC = new org.apache.thrift.protocol.TField("used_cpu", org.apache.thrift.protocol.TType.DOUBLE, (short)9);
   private static final org.apache.thrift.protocol.TField SYSTEM_STATS_FIELD_DESC = new org.apache.thrift.protocol.TField("system_stats", org.apache.thrift.protocol.TType.MAP, (short)10);
+  private static final org.apache.thrift.protocol.TField GPU_INFOS_FIELD_DESC = new org.apache.thrift.protocol.TField("gpu_infos", org.apache.thrift.protocol.TType.LIST, (short)11);
+  private static final org.apache.thrift.protocol.TField GPU_UTIL_INFOS_FIELD_DESC = new org.apache.thrift.protocol.TField("gpu_util_infos", org.apache.thrift.protocol.TType.LIST, (short)12);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -82,6 +84,8 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
   private double used_mem; // optional
   private double used_cpu; // optional
   private Map<String,Double> system_stats; // optional
+  private List<GpuInfo> gpu_infos; // optional
+  private List<GpuUtilizationInfo> gpu_util_infos; // optional
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -94,7 +98,9 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
     TOTAL_RESOURCES((short)7, "total_resources"),
     USED_MEM((short)8, "used_mem"),
     USED_CPU((short)9, "used_cpu"),
-    SYSTEM_STATS((short)10, "system_stats");
+    SYSTEM_STATS((short)10, "system_stats"),
+    GPU_INFOS((short)11, "gpu_infos"),
+    GPU_UTIL_INFOS((short)12, "gpu_util_infos");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -129,6 +135,10 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
           return USED_CPU;
         case 10: // SYSTEM_STATS
           return SYSTEM_STATS;
+        case 11: // GPU_INFOS
+          return GPU_INFOS;
+        case 12: // GPU_UTIL_INFOS
+          return GPU_UTIL_INFOS;
         default:
           return null;
       }
@@ -175,7 +185,7 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
   private static final int __USED_MEM_ISSET_ID = 3;
   private static final int __USED_CPU_ISSET_ID = 4;
   private byte __isset_bitfield = 0;
-  private static final _Fields optionals[] = {_Fields.VERSION,_Fields.TOTAL_RESOURCES,_Fields.USED_MEM,_Fields.USED_CPU,_Fields.SYSTEM_STATS};
+  private static final _Fields optionals[] = {_Fields.VERSION,_Fields.TOTAL_RESOURCES,_Fields.USED_MEM,_Fields.USED_CPU,_Fields.SYSTEM_STATS,_Fields.GPU_INFOS,_Fields.GPU_UTIL_INFOS};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
@@ -203,6 +213,12 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
         new org.apache.thrift.meta_data.MapMetaData(org.apache.thrift.protocol.TType.MAP, 
             new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING), 
             new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.DOUBLE))));
+    tmpMap.put(_Fields.GPU_INFOS, new org.apache.thrift.meta_data.FieldMetaData("gpu_infos", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
+        new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
+            new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRUCT            , "GpuInfo"))));
+    tmpMap.put(_Fields.GPU_UTIL_INFOS, new org.apache.thrift.meta_data.FieldMetaData("gpu_util_infos", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
+        new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
+            new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRUCT            , "GpuUtilizationInfo"))));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(SupervisorSummary.class, metaDataMap);
   }
@@ -257,6 +273,20 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
       Map<String,Double> __this__system_stats = new HashMap<String,Double>(other.system_stats);
       this.system_stats = __this__system_stats;
     }
+    if (other.is_set_gpu_infos()) {
+      List<GpuInfo> __this__gpu_infos = new ArrayList<GpuInfo>(other.gpu_infos.size());
+      for (GpuInfo other_element : other.gpu_infos) {
+        __this__gpu_infos.add(other_element);
+      }
+      this.gpu_infos = __this__gpu_infos;
+    }
+    if (other.is_set_gpu_util_infos()) {
+      List<GpuUtilizationInfo> __this__gpu_util_infos = new ArrayList<GpuUtilizationInfo>(other.gpu_util_infos.size());
+      for (GpuUtilizationInfo other_element : other.gpu_util_infos) {
+        __this__gpu_util_infos.add(other_element);
+      }
+      this.gpu_util_infos = __this__gpu_util_infos;
+    }
   }
 
   public SupervisorSummary deepCopy() {
@@ -281,6 +311,8 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
     set_used_cpu_isSet(false);
     this.used_cpu = 0.0;
     this.system_stats = null;
+    this.gpu_infos = null;
+    this.gpu_util_infos = null;
   }
 
   public String get_host() {
@@ -530,6 +562,82 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
     }
   }
 
+  public int get_gpu_infos_size() {
+    return (this.gpu_infos == null) ? 0 : this.gpu_infos.size();
+  }
+
+  public java.util.Iterator<GpuInfo> get_gpu_infos_iterator() {
+    return (this.gpu_infos == null) ? null : this.gpu_infos.iterator();
+  }
+
+  public void add_to_gpu_infos(GpuInfo elem) {
+    if (this.gpu_infos == null) {
+      this.gpu_infos = new ArrayList<GpuInfo>();
+    }
+    this.gpu_infos.add(elem);
+  }
+
+  public List<GpuInfo> get_gpu_infos() {
+    return this.gpu_infos;
+  }
+
+  public void set_gpu_infos(List<GpuInfo> gpu_infos) {
+    this.gpu_infos = gpu_infos;
+  }
+
+  public void unset_gpu_infos() {
+    this.gpu_infos = null;
+  }
+
+  /** Returns true if field gpu_infos is set (has been assigned a value) and false otherwise */
+  public boolean is_set_gpu_infos() {
+    return this.gpu_infos != null;
+  }
+
+  public void set_gpu_infos_isSet(boolean value) {
+    if (!value) {
+      this.gpu_infos = null;
+    }
+  }
+
+  public int get_gpu_util_infos_size() {
+    return (this.gpu_util_infos == null) ? 0 : this.gpu_util_infos.size();
+  }
+
+  public java.util.Iterator<GpuUtilizationInfo> get_gpu_util_infos_iterator() {
+    return (this.gpu_util_infos == null) ? null : this.gpu_util_infos.iterator();
+  }
+
+  public void add_to_gpu_util_infos(GpuUtilizationInfo elem) {
+    if (this.gpu_util_infos == null) {
+      this.gpu_util_infos = new ArrayList<GpuUtilizationInfo>();
+    }
+    this.gpu_util_infos.add(elem);
+  }
+
+  public List<GpuUtilizationInfo> get_gpu_util_infos() {
+    return this.gpu_util_infos;
+  }
+
+  public void set_gpu_util_infos(List<GpuUtilizationInfo> gpu_util_infos) {
+    this.gpu_util_infos = gpu_util_infos;
+  }
+
+  public void unset_gpu_util_infos() {
+    this.gpu_util_infos = null;
+  }
+
+  /** Returns true if field gpu_util_infos is set (has been assigned a value) and false otherwise */
+  public boolean is_set_gpu_util_infos() {
+    return this.gpu_util_infos != null;
+  }
+
+  public void set_gpu_util_infos_isSet(boolean value) {
+    if (!value) {
+      this.gpu_util_infos = null;
+    }
+  }
+
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
     case HOST:
@@ -612,6 +720,22 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
       }
       break;
 
+    case GPU_INFOS:
+      if (value == null) {
+        unset_gpu_infos();
+      } else {
+        set_gpu_infos((List<GpuInfo>)value);
+      }
+      break;
+
+    case GPU_UTIL_INFOS:
+      if (value == null) {
+        unset_gpu_util_infos();
+      } else {
+        set_gpu_util_infos((List<GpuUtilizationInfo>)value);
+      }
+      break;
+
     }
   }
 
@@ -647,6 +771,12 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
     case SYSTEM_STATS:
       return get_system_stats();
 
+    case GPU_INFOS:
+      return get_gpu_infos();
+
+    case GPU_UTIL_INFOS:
+      return get_gpu_util_infos();
+
     }
     throw new IllegalStateException();
   }
@@ -678,6 +808,10 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
       return is_set_used_cpu();
     case SYSTEM_STATS:
       return is_set_system_stats();
+    case GPU_INFOS:
+      return is_set_gpu_infos();
+    case GPU_UTIL_INFOS:
+      return is_set_gpu_util_infos();
     }
     throw new IllegalStateException();
   }
@@ -785,6 +919,24 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
         return false;
     }
 
+    boolean this_present_gpu_infos = true && this.is_set_gpu_infos();
+    boolean that_present_gpu_infos = true && that.is_set_gpu_infos();
+    if (this_present_gpu_infos || that_present_gpu_infos) {
+      if (!(this_present_gpu_infos && that_present_gpu_infos))
+        return false;
+      if (!this.gpu_infos.equals(that.gpu_infos))
+        return false;
+    }
+
+    boolean this_present_gpu_util_infos = true && this.is_set_gpu_util_infos();
+    boolean that_present_gpu_util_infos = true && that.is_set_gpu_util_infos();
+    if (this_present_gpu_util_infos || that_present_gpu_util_infos) {
+      if (!(this_present_gpu_util_infos && that_present_gpu_util_infos))
+        return false;
+      if (!this.gpu_util_infos.equals(that.gpu_util_infos))
+        return false;
+    }
+
     return true;
   }
 
@@ -841,6 +993,16 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
     list.add(present_system_stats);
     if (present_system_stats)
       list.add(system_stats);
+
+    boolean present_gpu_infos = true && (is_set_gpu_infos());
+    list.add(present_gpu_infos);
+    if (present_gpu_infos)
+      list.add(gpu_infos);
+
+    boolean present_gpu_util_infos = true && (is_set_gpu_util_infos());
+    list.add(present_gpu_util_infos);
+    if (present_gpu_util_infos)
+      list.add(gpu_util_infos);
 
     return list.hashCode();
   }
@@ -953,6 +1115,26 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
         return lastComparison;
       }
     }
+    lastComparison = Boolean.valueOf(is_set_gpu_infos()).compareTo(other.is_set_gpu_infos());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (is_set_gpu_infos()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.gpu_infos, other.gpu_infos);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(is_set_gpu_util_infos()).compareTo(other.is_set_gpu_util_infos());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (is_set_gpu_util_infos()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.gpu_util_infos, other.gpu_util_infos);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
     return 0;
   }
 
@@ -1039,6 +1221,26 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
         sb.append("null");
       } else {
         sb.append(this.system_stats);
+      }
+      first = false;
+    }
+    if (is_set_gpu_infos()) {
+      if (!first) sb.append(", ");
+      sb.append("gpu_infos:");
+      if (this.gpu_infos == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.gpu_infos);
+      }
+      first = false;
+    }
+    if (is_set_gpu_util_infos()) {
+      if (!first) sb.append(", ");
+      sb.append("gpu_util_infos:");
+      if (this.gpu_util_infos == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.gpu_util_infos);
       }
       first = false;
     }
@@ -1211,6 +1413,44 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
+          case 11: // GPU_INFOS
+            if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+              {
+                org.apache.thrift.protocol.TList _list90 = iprot.readListBegin();
+                struct.gpu_infos = new ArrayList<GpuInfo>(_list90.size);
+                GpuInfo _elem91;
+                for (int _i92 = 0; _i92 < _list90.size; ++_i92)
+                {
+                  _elem91 = new GpuInfo();
+                  _elem91.read(iprot);
+                  struct.gpu_infos.add(_elem91);
+                }
+                iprot.readListEnd();
+              }
+              struct.set_gpu_infos_isSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 12: // GPU_UTIL_INFOS
+            if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+              {
+                org.apache.thrift.protocol.TList _list93 = iprot.readListBegin();
+                struct.gpu_util_infos = new ArrayList<GpuUtilizationInfo>(_list93.size);
+                GpuUtilizationInfo _elem94;
+                for (int _i95 = 0; _i95 < _list93.size; ++_i95)
+                {
+                  _elem94 = new GpuUtilizationInfo();
+                  _elem94.read(iprot);
+                  struct.gpu_util_infos.add(_elem94);
+                }
+                iprot.readListEnd();
+              }
+              struct.set_gpu_util_infos_isSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
           default:
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
         }
@@ -1255,10 +1495,10 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
           oprot.writeFieldBegin(TOTAL_RESOURCES_FIELD_DESC);
           {
             oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.DOUBLE, struct.total_resources.size()));
-            for (Map.Entry<String, Double> _iter90 : struct.total_resources.entrySet())
+            for (Map.Entry<String, Double> _iter96 : struct.total_resources.entrySet())
             {
-              oprot.writeString(_iter90.getKey());
-              oprot.writeDouble(_iter90.getValue());
+              oprot.writeString(_iter96.getKey());
+              oprot.writeDouble(_iter96.getValue());
             }
             oprot.writeMapEnd();
           }
@@ -1280,12 +1520,40 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
           oprot.writeFieldBegin(SYSTEM_STATS_FIELD_DESC);
           {
             oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.DOUBLE, struct.system_stats.size()));
-            for (Map.Entry<String, Double> _iter91 : struct.system_stats.entrySet())
+            for (Map.Entry<String, Double> _iter97 : struct.system_stats.entrySet())
             {
-              oprot.writeString(_iter91.getKey());
-              oprot.writeDouble(_iter91.getValue());
+              oprot.writeString(_iter97.getKey());
+              oprot.writeDouble(_iter97.getValue());
             }
             oprot.writeMapEnd();
+          }
+          oprot.writeFieldEnd();
+        }
+      }
+      if (struct.gpu_infos != null) {
+        if (struct.is_set_gpu_infos()) {
+          oprot.writeFieldBegin(GPU_INFOS_FIELD_DESC);
+          {
+            oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.gpu_infos.size()));
+            for (GpuInfo _iter98 : struct.gpu_infos)
+            {
+              _iter98.write(oprot);
+            }
+            oprot.writeListEnd();
+          }
+          oprot.writeFieldEnd();
+        }
+      }
+      if (struct.gpu_util_infos != null) {
+        if (struct.is_set_gpu_util_infos()) {
+          oprot.writeFieldBegin(GPU_UTIL_INFOS_FIELD_DESC);
+          {
+            oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.gpu_util_infos.size()));
+            for (GpuUtilizationInfo _iter99 : struct.gpu_util_infos)
+            {
+              _iter99.write(oprot);
+            }
+            oprot.writeListEnd();
           }
           oprot.writeFieldEnd();
         }
@@ -1328,17 +1596,23 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
       if (struct.is_set_system_stats()) {
         optionals.set(4);
       }
-      oprot.writeBitSet(optionals, 5);
+      if (struct.is_set_gpu_infos()) {
+        optionals.set(5);
+      }
+      if (struct.is_set_gpu_util_infos()) {
+        optionals.set(6);
+      }
+      oprot.writeBitSet(optionals, 7);
       if (struct.is_set_version()) {
         oprot.writeString(struct.version);
       }
       if (struct.is_set_total_resources()) {
         {
           oprot.writeI32(struct.total_resources.size());
-          for (Map.Entry<String, Double> _iter92 : struct.total_resources.entrySet())
+          for (Map.Entry<String, Double> _iter100 : struct.total_resources.entrySet())
           {
-            oprot.writeString(_iter92.getKey());
-            oprot.writeDouble(_iter92.getValue());
+            oprot.writeString(_iter100.getKey());
+            oprot.writeDouble(_iter100.getValue());
           }
         }
       }
@@ -1351,10 +1625,28 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
       if (struct.is_set_system_stats()) {
         {
           oprot.writeI32(struct.system_stats.size());
-          for (Map.Entry<String, Double> _iter93 : struct.system_stats.entrySet())
+          for (Map.Entry<String, Double> _iter101 : struct.system_stats.entrySet())
           {
-            oprot.writeString(_iter93.getKey());
-            oprot.writeDouble(_iter93.getValue());
+            oprot.writeString(_iter101.getKey());
+            oprot.writeDouble(_iter101.getValue());
+          }
+        }
+      }
+      if (struct.is_set_gpu_infos()) {
+        {
+          oprot.writeI32(struct.gpu_infos.size());
+          for (GpuInfo _iter102 : struct.gpu_infos)
+          {
+            _iter102.write(oprot);
+          }
+        }
+      }
+      if (struct.is_set_gpu_util_infos()) {
+        {
+          oprot.writeI32(struct.gpu_util_infos.size());
+          for (GpuUtilizationInfo _iter103 : struct.gpu_util_infos)
+          {
+            _iter103.write(oprot);
           }
         }
       }
@@ -1373,22 +1665,22 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
       struct.set_num_used_workers_isSet(true);
       struct.supervisor_id = iprot.readString();
       struct.set_supervisor_id_isSet(true);
-      BitSet incoming = iprot.readBitSet(5);
+      BitSet incoming = iprot.readBitSet(7);
       if (incoming.get(0)) {
         struct.version = iprot.readString();
         struct.set_version_isSet(true);
       }
       if (incoming.get(1)) {
         {
-          org.apache.thrift.protocol.TMap _map94 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.DOUBLE, iprot.readI32());
-          struct.total_resources = new HashMap<String,Double>(2*_map94.size);
-          String _key95;
-          double _val96;
-          for (int _i97 = 0; _i97 < _map94.size; ++_i97)
+          org.apache.thrift.protocol.TMap _map104 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.DOUBLE, iprot.readI32());
+          struct.total_resources = new HashMap<String,Double>(2*_map104.size);
+          String _key105;
+          double _val106;
+          for (int _i107 = 0; _i107 < _map104.size; ++_i107)
           {
-            _key95 = iprot.readString();
-            _val96 = iprot.readDouble();
-            struct.total_resources.put(_key95, _val96);
+            _key105 = iprot.readString();
+            _val106 = iprot.readDouble();
+            struct.total_resources.put(_key105, _val106);
           }
         }
         struct.set_total_resources_isSet(true);
@@ -1403,18 +1695,46 @@ public class SupervisorSummary implements org.apache.thrift.TBase<SupervisorSumm
       }
       if (incoming.get(4)) {
         {
-          org.apache.thrift.protocol.TMap _map98 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.DOUBLE, iprot.readI32());
-          struct.system_stats = new HashMap<String,Double>(2*_map98.size);
-          String _key99;
-          double _val100;
-          for (int _i101 = 0; _i101 < _map98.size; ++_i101)
+          org.apache.thrift.protocol.TMap _map108 = new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING, org.apache.thrift.protocol.TType.DOUBLE, iprot.readI32());
+          struct.system_stats = new HashMap<String,Double>(2*_map108.size);
+          String _key109;
+          double _val110;
+          for (int _i111 = 0; _i111 < _map108.size; ++_i111)
           {
-            _key99 = iprot.readString();
-            _val100 = iprot.readDouble();
-            struct.system_stats.put(_key99, _val100);
+            _key109 = iprot.readString();
+            _val110 = iprot.readDouble();
+            struct.system_stats.put(_key109, _val110);
           }
         }
         struct.set_system_stats_isSet(true);
+      }
+      if (incoming.get(5)) {
+        {
+          org.apache.thrift.protocol.TList _list112 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.gpu_infos = new ArrayList<GpuInfo>(_list112.size);
+          GpuInfo _elem113;
+          for (int _i114 = 0; _i114 < _list112.size; ++_i114)
+          {
+            _elem113 = new GpuInfo();
+            _elem113.read(iprot);
+            struct.gpu_infos.add(_elem113);
+          }
+        }
+        struct.set_gpu_infos_isSet(true);
+      }
+      if (incoming.get(6)) {
+        {
+          org.apache.thrift.protocol.TList _list115 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.gpu_util_infos = new ArrayList<GpuUtilizationInfo>(_list115.size);
+          GpuUtilizationInfo _elem116;
+          for (int _i117 = 0; _i117 < _list115.size; ++_i117)
+          {
+            _elem116 = new GpuUtilizationInfo();
+            _elem116.read(iprot);
+            struct.gpu_util_infos.add(_elem116);
+          }
+        }
+        struct.set_gpu_util_infos_isSet(true);
       }
     }
   }

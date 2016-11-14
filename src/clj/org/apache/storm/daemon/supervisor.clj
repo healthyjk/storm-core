@@ -31,6 +31,7 @@
   (:import [org.apache.storm.generated WorkerResources ProfileAction])
   (:import [org.apache.storm.localizer LocalResource])
   (:use [org.apache.storm.daemon common])
+  (:use [org.apache.storm converter])
   (:require [org.apache.storm.command [healthcheck :as healthcheck]])
   (:require [org.apache.storm.daemon [worker :as worker]]
             [org.apache.storm [process-simulator :as psim] [cluster :as cluster] [event :as event]]
@@ -347,6 +348,8 @@
    :download-lock (Object.)
    :stormid->profiler-actions (atom {})
    :system-stats (mk-system-stats-fn)
+   :gpu-infos-fn (mk-gpu-infos-fn)
+   :gpu-util-infos-fn (mk-gpu-util-infos-fn)
    })
 
 (defn required-topo-files-exist?
@@ -786,6 +789,8 @@
                                                  (:version supervisor)
                                                  (mk-supervisor-capacities conf)
                                                  ((:system-stats supervisor))
+                                                 ((:gpu-infos-fn supervisor))
+                                                 ((:gpu-util-infos-fn supervisor))
                                                  )))]
     (heartbeat-fn)
 

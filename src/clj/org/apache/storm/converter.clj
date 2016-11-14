@@ -15,10 +15,78 @@
 ;; limitations under the License.
 (ns org.apache.storm.converter
   (:import [org.apache.storm.generated SupervisorInfo NodeInfo Assignment WorkerResources
-            StormBase TopologyStatus ClusterWorkerHeartbeat ExecutorInfo ErrorInfo Credentials RebalanceOptions KillOptions
-            TopologyActionOptions DebugOptions ProfileRequest])
+                                       StormBase TopologyStatus ClusterWorkerHeartbeat ExecutorInfo ErrorInfo Credentials RebalanceOptions KillOptions
+                                       TopologyActionOptions DebugOptions ProfileRequest GpuInfo GpuUtilizationInfo])
+  (:import [edu.fudan.gpuhelper GPUHelper DeviceInfo]
+           (edu.fudan.nvmlhelper NVMLHelper))
   (:use [org.apache.storm util stats log])
-  (:require [org.apache.storm.daemon [common :as common]]))
+  (:require [org.apache.storm.daemon [common :as common]])
+  (:require [clojure.data.json :as json]))
+
+(defn thriftify-gpu-info [gpu-info]
+  (doto (GpuInfo.)
+    (.set_id (int (:id gpu-info)))
+    (.set_name (:name gpu-info))
+    (.set_driver_version (int (:driver-version gpu-info)))
+    (.set_major (int (:major gpu-info)))
+    (.set_minor (int (:minor gpu-info)))
+    (.set_total_mem_size (long (:total-mem-size gpu-info)))
+    (.set_multi_processor_count (int (:multi-processor-count gpu-info)))
+    (.set_cuda_cores_per_multiproc (int (:cuda-cores-per-multiproc gpu-info)))
+    (.set_gpu_clock_rate (int (:gpu-clock-rate gpu-info)))
+    (.set_mem_clock_rate (int (:mem-clock-rate gpu-info)))
+    (.set_mem_bus_width (int (:mem-bus-width gpu-info)))
+    (.set_device_overlap (boolean (:device-overlap gpu-info)))
+    (.set_async_engine_count (int (:async-engine-count gpu-info))))
+  ;(do
+  ;  (log-message "thriftify gpu info")
+  ;  (log-message "id:" (int (:id gpu-info)))
+  ;  (log-message "name:" (:name gpu-info))
+  ;  (log-message "driver-version:"  (int (:driver-version gpu-info)))
+  ;  (log-message "major:" (int (:major gpu-info)) )
+  ;  (log-message "minor:" (int (:minor gpu-info)) )
+  ;  (log-message "async:"  (int (:async-engine-count gpu-info)))
+  ;  (log-message "multi-core:" (*  (int (:multi-processor-count gpu-info)) (int (:cuda-cores-per-multiproc gpu-info))))
+  ;  (log-message "total-mem-size:" (long (:total-mem-size gpu-info)))
+  ;)
+  )
+
+(defn clojurify-gpu-info [^GpuInfo gpu-info]
+  (if gpu-info
+    (org.apache.storm.daemon.common.GpuInfo.
+      (.get_id gpu-info)
+      (.get_name gpu-info)
+      (.get_driver_version gpu-info)
+      (.get_major gpu-info)
+      (.get_minor gpu-info)
+      (.get_total_mem_size gpu-info)
+      (.get_multi_processor_count gpu-info)
+      (.get_cuda_cores_per_multiproc gpu-info)
+      (.get_gpu_clock_rate gpu-info)
+      (.get_mem_clock_rate gpu-info)
+      (.get_mem_bus_width gpu-info)
+      (.is_device_overlap gpu-info)
+      (.get_async_engine_count gpu-info)
+      )))
+
+(defn thriftify-gpu-utilization-info [gpu-util-info]
+  (doto (GpuUtilizationInfo.)
+    (.set_id (int (:id gpu-util-info)))
+    (.set_gpu_util (int (:gpu-util gpu-util-info)))
+    (.set_total_mem (long (:total-mem gpu-util-info)))
+    (.set_used_mem (long (:used-mem gpu-util-info)))
+    (.set_process_count (int (:process-count gpu-util-info)))
+    ))
+
+(defn clojurify-gpu-utilization-info [^GpuUtilizationInfo gpu-util-info]
+  (if gpu-util-info
+    (org.apache.storm.daemon.common.GpuUtilizationInfo.
+      (.get_id gpu-util-info)
+      (.get_gpu_util gpu-util-info)
+      (.get_total_mem gpu-util-info)
+      (.get_used_mem gpu-util-info)
+      (.get_process_count gpu-util-info)
+      )))
 
 (defn thriftify-supervisor-info [supervisor-info]
   (doto (SupervisorInfo.)
@@ -32,6 +100,8 @@
     (.set_version (:version supervisor-info))
     (.set_resources_map (:resources-map supervisor-info))
     (.set_system_stats (:system-stats supervisor-info))
+    (.set_gpu_infos (into [] (map thriftify-gpu-info (:gpu-infos supervisor-info))))
+    (.set_gpu_util_infos (into [] (map thriftify-gpu-utilization-info (:gpu-util-infos supervisor-info))))
     ))
 
 (defn clojurify-supervisor-info [^SupervisorInfo supervisor-info]
@@ -47,6 +117,8 @@
       (.get_version supervisor-info)
       (if-let [res-map (.get_resources_map supervisor-info)] (into {} res-map))
       (if-let [system_stats (.get_system_stats supervisor-info)] (into {} system_stats))
+      (if-let [gpu-infos (.get_gpu_infos supervisor-info)] (map clojurify-gpu-info gpu-infos))
+      (if-let [gpu-util-infos (.get_gpu_util_infos supervisor-info)] (map clojurify-gpu-utilization-info gpu-util-infos))
       )))
 
 (defn thriftify-assignment [assignment]
@@ -281,3 +353,72 @@
     (into {} (.get_creds credentials))
     nil
     ))
+
+(defn device-info-to-gpu-info [^DeviceInfo device-info]
+  "transform device-info to GpuInfo"
+  (do
+    ;(log-message "id:" (.getDevOrdinal device-info))
+    ;(log-message "name:" (.getDevName device-info))
+    ;(log-message "driver-version:" (.getDriverVersion device-info))
+    ;(log-message "major:" (.getMajor device-info))
+    ;(log-message "minor:" (.getMinor device-info))
+    ;(log-message "async:" (.getAsyncEngineCount device-info))
+    ;(log-message "multi-core:" (* (.getMultiprocessorCount device-info) (.getCUDACoresPerMulpro device-info)))
+    ;(log-message "total-mem-size:" (.getTotalMemSize device-info))
+  (if device-info
+    (org.apache.storm.daemon.common.GpuInfo.
+      (.getDevOrdinal device-info)
+      (.getDevName device-info)
+      (.getDriverVersion device-info)
+      (.getMajor device-info)
+      (.getMinor device-info)
+      (.getTotalMemSize device-info)
+      (.getMultiprocessorCount device-info)
+      (.getCUDACoresPerMulpro device-info)
+      (.getGPUClockRate device-info)
+      (.getMemClockRate device-info)
+      (.getMemBusWidth device-info)
+      (.getDeviceOverlap device-info)
+      (.getAsyncEngineCount device-info)
+      ))))
+
+(defn mk-device-infos-fn
+  "Returns a fuction that returns the gpu information of the node"
+  []
+  (let [gpu-helper (GPUHelper.)
+        gpu-count (.getDeviceCount gpu-helper)]
+    (fn []
+      (into [] (map #(.getDeviceInfo gpu-helper %) (range gpu-count))))
+    ))
+
+(defn mk-gpu-infos-fn
+  "return a function that contains the detail gpu information"
+  []
+  (let [device-infos ((mk-device-infos-fn))]
+    (fn []
+      (into []
+            (for [device-info device-infos]
+              (device-info-to-gpu-info device-info))))
+    ))
+
+; device-info is a map converted from json
+(defn device-info-to-gpu-util-info [device-info]
+  (if device-info
+    (org.apache.storm.daemon.common.GpuUtilizationInfo.
+      (int (:deviceIndex device-info))
+      (int (:gpuUtilization device-info))
+      (long (:totalMem device-info))
+      (long (:usedMem device-info))
+      (int (:processCount device-info)))))
+
+(defn mk-gpu-util-infos-fn
+  "return a function that contains the detail gpu utilization information"
+  []
+  (fn []
+    (let [nvml-info (NVMLHelper/getNvmlInfo)
+          nvml-json-str (json/read-str nvml-info :key-fn keyword)
+          gpu-util-infos (:deviceInfo nvml-json-str)]
+      (log-message "gpu-util-info: " nvml-json-str)
+      (into []
+            (for [gpu-util-info gpu-util-infos]
+              (device-info-to-gpu-util-info gpu-util-info))))))

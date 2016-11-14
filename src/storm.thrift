@@ -175,6 +175,7 @@ struct SupervisorSummary {
   9: optional double used_cpu;
   10: optional map<string, double> system_stats;
   11: optional list<GpuInfo> gpu_infos;
+  12: optional list<GpuUtilizationInfo> gpu_util_infos;
 }
 
 struct NimbusSummary {
@@ -445,6 +446,15 @@ struct SupervisorInfo {
     9: optional map<string, double> resources_map;
     10: optional map<string, double> system_stats;
     11: optional list<GpuInfo> gpu_infos;
+    12: optional list<GpuUtilizationInfo> gpu_util_infos;
+}
+
+struct GpuUtilizationInfo {
+    1: required i32 id;
+    2: required i32 gpu_util;
+    3: required i64 total_mem;
+    4: required i64 used_mem;
+    5: required i32 process_count;
 }
 
 struct NodeInfo {
